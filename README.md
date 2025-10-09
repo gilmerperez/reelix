@@ -10,93 +10,21 @@ The desktop-first design ensures great presentation on larger screens with full 
 
 ## Table of Contents
 
-- [Usage](#usage)
 - [Mock-Up](#mock-up)
-- [Instructions](#instructions)
 - [Key Features](#key-features)
 - [Technology Stack](#technology-stack)
-- [Deployed Application](#deployed-application)
-
-## Usage
-
-To start the application locally or in production:
-
-#### 1. Install dependencies
-
-```bash
-npm install
-```
-
-#### 2. Run the development server
-
-```bash
-npm run dev
-```
-
-#### 3. Build for production
-
-```bash
-npm run build
-```
-
-#### 4. Preview production build
-
-```bash
-npm run preview
-```
-
-Make sure to create a `.env` file in the root of the project with the following:
-
-- PORT=4173
-- VITE_TMDB_API_KEY=your_tmdb_api_key
 
 ## Mock-Up
 
 The following image shows the web application's appearance and functionality:
 
-![Reelix Home Page](./src/assets/mockups/home.jpg)
+![Home Page](./src/assets/screenshots/home.jpg)
 
-![Reelix Movies Page](./src/assets/mockups/movies.jpg)
+![Movies Page](./src/assets/screenshots/movies.jpg)
 
-![Reelix TV Shows Page](./src/assets/mockups/tv-shows.jpg)
+![TV Shows Page](./src/assets/screenshots/tv-shows.jpg)
 
-![Reelix Top IMDB Page](./src/assets/mockups/top-imdb.jpg)
-
-## Instructions
-
-To use this application, follow these simple steps:
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/yourusername/reelix.git
-cd reelix
-```
-
-### 2. Create `.env` file
-
-Add your TMDB API key to the .env file as shown above.
-
-### 3. Install and start
-
-```bash
-npm install
-npm run dev
-```
-
-### 4. Deploy
-
-This project can be deployed to platforms like Render:
-
-- Select Web Service
-
-- Use `npm install && npm run build` as the build command
-
-- Use `npm run preview` as the start command
-
-- Set environment variables including your VITE_TMDB_API_KEY and PORT
-
-- Ensure vite.config.js allows the deployment host under preview.allowedHosts
+![Top IMDB Page](./src/assets/screenshots/top-imdb.jpg)
 
 ## Key Features
 
@@ -106,9 +34,9 @@ This project can be deployed to platforms like Render:
 
 - **Pagination Support:** Custom-styled pagination allows users to navigate through large result sets.
 
-- **Detailed Media Pages:** Each movie or show has a full page with poster, trailer, cast, crew, genres, and more.
-
 - **Multilingual Auto-Translation:** Supports German, Spanish, Portuguese, and French based on region settings.
+
+- **Detailed Media Pages:** Each movie or show has a full page with poster, trailer, cast, crew, genres, and more.
 
 - **Dynamic Movie & TV Data:** Fetches and renders media info using the TMDB API, including metadata and trailers.
 
@@ -124,16 +52,12 @@ This project can be deployed to platforms like Render:
 
 - **dotenv:** Used to load environment variables like the API key and port.
 
-- **React Router DOM:** Handles dynamic routing for detail pages and filters.
-
 - **CSS Modules:** Provides scoped, maintainable styling for each component.
+
+- **React Router DOM:** Handles dynamic routing for detail pages and filters.
 
 - **Vite:** Fast bundler and dev server optimized for modern JavaScript projects.
 
 - **TMDB API:** Source for real-time media data including metadata, images, and videos.
 
 - **Render:** Used for deploying the app as a web service with dynamic port configuration.
-
-## Deployed Application
-
-[Reelix](https://reelix.onrender.com)
