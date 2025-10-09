@@ -1,9 +1,9 @@
 import logo from "/favicon.png";
 import styles from "./Home.module.css";
-import Accordion from "../components/Accordion/Accordion";
+import Accordion from "../../components/Accordion/Accordion";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { searchMovies, searchTVShows } from "../utils/api";
+import { searchMovies, searchTVShows } from "../../utils/api";
 
 function Home() {
   const [query, setQuery] = useState("");

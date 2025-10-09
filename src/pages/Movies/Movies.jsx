@@ -1,10 +1,10 @@
 import styles from "./Movies.module.css";
-import Filter from "../components/Filter/Filter";
-import Loading from "../components/Loading/Loading";
-import MovieCard from "../components/MovieCard/MovieCard";
-import Pagination from "../components/Pagination/Pagination";
+import Filter from "../../components/Filter/Filter";
+import Loading from "../../components/Loading/Loading";
+import MovieCard from "../../components/MovieCard/MovieCard";
+import Pagination from "../../components/Pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
-import { fetchFilteredContent, searchMovies } from "../utils/api";
+import { fetchFilteredContent, searchMovies } from "../../utils/api";
 import { useState, useEffect, useMemo, useCallback } from "react";
 
 function Movies() {

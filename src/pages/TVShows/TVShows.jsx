@@ -1,26 +1,39 @@
-import styles from "./TopIMDB.module.css";
-import Loading from "../components/Loading/Loading";
-import Pagination from "../components/Pagination/Pagination";
-import TopIMDBCard from "../components/Top IMDB Card/TopIMDBCard";
-import { useState, useEffect, useCallback } from "react";
-import { fetchTopRatedMovies, searchMovies } from "../utils/api";
+import styles from "./TVShows.module.css";
+import Filter from "../../components/Filter/Filter";
+import Loading from "../../components/Loading/Loading";
+import Pagination from "../../components/Pagination/Pagination";
+import TVShowCard from "../../components/TV Show Card/TVShowCard";
+import { useSearchParams } from "react-router-dom";
+import { useState, useEffect, useMemo, useCallback } from "react";
+import { fetchFilteredContent, searchTVShows } from "../../utils/api";
 
-function TopIMDB() {
+function TVShows() {
   // State hooks
   const [page, setPage] = useState(1);
   const [error, setError] = useState("");
-  const [movies, setMovies] = useState([]);
+  const [tvShows, setTVShows] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [totalResults, setTotalResults] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   // Change page title
   useEffect(() => {
-    document.title = "Reelix | Top IMDB";
+    document.title = "Reelix | TV Shows";
   }, []);
 
+  // Extract filters from the URL parameters, using useMemo to prevent unnecessary effect triggers
+  const filters = useMemo(
+    () => ({
+      year: searchParams.get("year") || "",
+      genre: searchParams.get("genre") || "",
+      country: searchParams.get("country") || "",
+    }),
+    [searchParams]
+  );
+
   // Calculates total pages based on TMDB results
-  const RESULTS_PER_PAGE = 20;
+  const RESULTS_PER_PAGE = 52;
   const MAX_PAGES_TO_SHOW = 10;
   const totalPages = Math.min(Math.ceil(totalResults / RESULTS_PER_PAGE), MAX_PAGES_TO_SHOW);
 
@@ -31,13 +44,13 @@ function TopIMDB() {
       setError("");
       setLoading(true);
       try {
-        const data = await fetchTopRatedMovies(page, controller.signal);
-        setMovies(data.results || data);
+        const data = await fetchFilteredContent("tv", { ...filters, page }, RESULTS_PER_PAGE, controller.signal);
+        setTVShows(data.results || data);
         setTotalResults(data.totalResults || (data.results ? data.results.length : data.length));
       } catch (error) {
         if (error.name !== "AbortError") {
-          console.error("Failed to fetch top rated movies", error);
-          setError("Sorry, something went wrong while fetching top rated movies");
+          console.error("Failed to fetch tv shows", error);
+          setError("Sorry, something went wrong while fetching the latest tv shows");
         }
       } finally {
         setLoading(false);
@@ -47,7 +60,18 @@ function TopIMDB() {
     return () => {
       controller.abort();
     };
-  }, [page]);
+  }, [filters, page]);
+
+  // When user uses filters, wrapped in useCallback
+  const handleFilterChange = useCallback(
+    (updatedFilters) => {
+      setPage(1); // Reset to first page on filter change
+      setTVShows([]); // Clear previous results to prevent mismatch
+      setSearchTerm(""); // Clear search when user uses filters
+      setSearchParams(updatedFilters); // Update filters
+    },
+    [setSearchParams]
+  );
 
   // Manual input update, wrapped in useCallback
   const handleSearchInputChange = useCallback((event) => {
@@ -65,9 +89,9 @@ function TopIMDB() {
     setLoading(true);
 
     try {
-      const data = await searchMovies(searchTerm);
+      const data = await searchTVShows(searchTerm);
       setPage(1); // Reset to first page
-      setMovies(data.results || data);
+      setTVShows(data.results || data);
       setTotalResults(data.totalResults || (data.results ? data.results.length : data.length));
     } catch (error) {
       console.error("Search failed", error);
@@ -92,7 +116,7 @@ function TopIMDB() {
       <main>
         <div className={`container ${styles.container}`}>
           {/* Heading */}
-          <h1 className={styles.heading}>Top Rated on IMDB</h1>
+          <h1 className={styles.heading}>TV Shows</h1>
           {/* Error Message */}
           {error && <div className={styles.error}>{error}</div>}
           {/* Search Bar */}
@@ -107,7 +131,7 @@ function TopIMDB() {
               }}
             />
             <button onClick={handleSearch}>
-              <i className="fa-solid fa-trophy"></i>
+              <i className="fa-solid fa-tv"></i>
             </button>
           </section>
           {/* Loading or Results */}
@@ -115,13 +139,15 @@ function TopIMDB() {
             <Loading />
           ) : (
             <>
-              {/* Top IMDB Cards */}
-              <section className={styles.topIMDBCards}>
-                {movies.length > 0 ? (
-                  movies.map((movie, index) => <TopIMDBCard key={`${movie.id}-${index}`} movie={movie} />)
+              {/* Filters */}
+              <Filter onFilterChange={handleFilterChange} initialFilters={filters} />
+              {/* TV Show Cards */}
+              <section className={styles.tvShowCards}>
+                {tvShows.length > 0 ? (
+                  tvShows.map((show, index) => <TVShowCard key={`${show.id}-${index}`} show={show} />)
                 ) : (
                   <div className={styles.emptyState}>
-                    <p>No movies found matching your criteria</p>
+                    <p>No tv shows found matching your criteria</p>
                   </div>
                 )}
               </section>
@@ -135,4 +161,4 @@ function TopIMDB() {
   );
 }
 
-export default TopIMDB;
+export default TVShows;
