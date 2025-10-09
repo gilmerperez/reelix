@@ -1,4 +1,4 @@
-import logo from "../assets/logo.png";
+import logo from "/favicon.png";
 import styles from "./Home.module.css";
 import Accordion from "../components/Accordion/Accordion";
 import { useState } from "react";
