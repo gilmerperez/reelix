@@ -16,6 +16,10 @@ footer {
   justify-content: center;
 }
 
+.topContainer {
+  text-align: center;
+}
+
 /* Legal disclaimer */
 .legalDisclaimer {
   max-width: 800px;
@@ -36,42 +40,51 @@ footer {
 .seperator {
   width: 100%;
   height: 2px;
-  border: none;
-  margin: 0.75rem 0rem;
+  margin: 0.5rem 0rem;
   background-color: var(--primary);
 }
 
-/* Navigation links */
-.siteNavigation {
+.bottomContainer {
   gap: 1rem;
+  width: 100%;
   display: flex;
-  align-items: center;
   transition: 0.3s ease;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
-.siteNavigation a {
+.siteNavigation,
+.socialLinks,
+.legalPages,
+.contactInfo {
+  display: flex;
+  transition: 0.3s ease;
+  flex-direction: column;
+}
+
+.navHeader {
+  font-weight: 500;
+  font-size: 1.25rem;
+  transition: 0.3s ease;
+  margin-bottom: 0.15rem;
+}
+
+.navItems {
+  gap: 0.15rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.navItems a {
+  position: relative;
   font-size: 1.15rem;
   transition: 0.3s ease;
-}
-
-.siteNavigation a:hover {
   color: var(--text-secondary);
-  transform: translateY(-3px) scale(1.05);
 }
 
-@media (max-width: 815px) {
-  .siteNavigation {
-    gap: 0.5rem;
-    align-self: flex-start;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-
-  .siteNavigation a:hover {
-    transform: translateX(5px);
-  }
+.navItems a:hover {
+  color: var(--text-primary);
+  transform: translateX(5px);
 }
 
 /* Tablet responsiveness */
@@ -88,7 +101,16 @@ footer {
     font-size: 1rem;
   }
 
-  .siteNavigation a {
+  .bottomContainer {
+    gap: 0.5rem;
+    flex-direction: column;
+  }
+
+  .navHeader {
+    font-size: 1.15rem;
+  }
+
+  .navItems a {
     font-size: 1rem;
   }
 }
@@ -107,7 +129,11 @@ footer {
     font-size: 0.95rem;
   }
 
-  .siteNavigation a {
+  .navHeader {
+    font-size: 1rem;
+  }
+
+  .navItems a {
     font-size: 0.95rem;
   }
 }
