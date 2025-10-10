@@ -21,6 +21,7 @@ footer {
   max-width: 800px;
   font-size: 1.15rem;
   text-align: center;
+  transition: 0.3s ease;
   margin-bottom: 0.5rem;
   color: var(--text-secondary);
 }
@@ -28,6 +29,7 @@ footer {
 /* Copyright */
 .copyright {
   font-size: 1.15rem;
+  transition: 0.3s ease;
 }
 
 /* Seperator */
@@ -44,6 +46,7 @@ footer {
   gap: 1rem;
   display: flex;
   align-items: center;
+  transition: 0.3s ease;
   justify-content: center;
 }
 
