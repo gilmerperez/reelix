@@ -75,59 +75,83 @@ function Home() {
 
           {/* Social links */}
           <section className={styles.socialLinks}>
-            <a href="https://www.instagram.com/" rel="noopener noreferrer" target="_blank">
-              <div className={`${styles.socialLink} ${styles.instagramSocialLink}`}>
-                <i className="fa-brands fa-instagram"></i>
-                <p>2B</p>
-              </div>
-            </a>
-            <a href="https://www.whatsapp.com/" rel="noopener noreferrer" target="_blank">
-              <div className={`${styles.socialLink} ${styles.whatsappSocialLink}`}>
-                <i className="fa-brands fa-whatsapp"></i>
-                <p>3B</p>
-              </div>
-            </a>
-            <a href="https://www.facebook.com/" rel="noopener noreferrer" target="_blank">
-              <div className={`${styles.socialLink} ${styles.facebookSocialLink}`}>
-                <i className="fa-brands fa-facebook-f"></i>
-                <p>3.07B</p>
-              </div>
-            </a>
-            <a href="https://www.youtube.com/" rel="noopener noreferrer" target="_blank">
-              <div className={`${styles.socialLink} ${styles.youtubeSocialLink}`}>
-                <i className="fa-brands fa-youtube"></i>
-                <p>2.7B</p>
-              </div>
-            </a>
-            <a href="https://www.reddit.com/" rel="noopener noreferrer" target="_blank">
-              <div className={`${styles.socialLink} ${styles.redditSocialLink}`}>
-                <i className="fa-brands fa-reddit-alien"></i>
-                <p>712M</p>
-              </div>
-            </a>
-            <a href="https://www.x.com/" rel="noopener noreferrer" target="_blank">
-              <div className={`${styles.socialLink} ${styles.xSocialLink}`}>
-                <i className="fa-brands fa-x-twitter"></i>
-                <p>563M</p>
-              </div>
-            </a>
-            <a href="https://www.tiktok.com/" rel="noopener noreferrer" target="_blank">
-              <div className={`${styles.socialLink} ${styles.tiktokSocialLink}`}>
-                <i className="fa-brands fa-tiktok"></i>
-                <p>1.84B</p>
-              </div>
-            </a>
-            <a href="https://www.snapchat.com/" rel="noopener noreferrer" target="_blank">
-              <div className={`${styles.socialLink} ${styles.snapchatSocialLink}`}>
-                <i className="fa-brands fa-snapchat"></i>
-                <p>850M</p>
-              </div>
-            </a>
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              to="https://www.instagram.com/"
+              className={`${styles.socialLink} ${styles.instagramSocialLink}`}
+            >
+              <i className="fa-brands fa-instagram"></i>
+              <p>2B</p>
+            </Link>
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              to="https://www.whatsapp.com/"
+              className={`${styles.socialLink} ${styles.whatsappSocialLink}`}
+            >
+              <i className="fa-brands fa-whatsapp"></i>
+              <p>3B</p>
+            </Link>
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              to="https://www.facebook.com/"
+              className={`${styles.socialLink} ${styles.facebookSocialLink}`}
+            >
+              <i className="fa-brands fa-facebook-f"></i>
+              <p>3.07B</p>
+            </Link>
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              to="https://www.youtube.com/"
+              className={`${styles.socialLink} ${styles.youtubeSocialLink}`}
+            >
+              <i className="fa-brands fa-youtube"></i>
+              <p>2.7B</p>
+            </Link>
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              to="https://www.reddit.com/"
+              className={`${styles.socialLink} ${styles.redditSocialLink}`}
+            >
+              <i className="fa-brands fa-reddit-alien"></i>
+              <p>712M</p>
+            </Link>
+            <Link
+              target="_blank"
+              to="https://www.x.com/"
+              rel="noopener noreferrer"
+              className={`${styles.socialLink} ${styles.xSocialLink}`}
+            >
+              <i className="fa-brands fa-x-twitter"></i>
+              <p>563M</p>
+            </Link>
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              to="https://www.tiktok.com/"
+              className={`${styles.socialLink} ${styles.tiktokSocialLink}`}
+            >
+              <i className="fa-brands fa-tiktok"></i>
+              <p>1.84B</p>
+            </Link>
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              to="https://www.snapchat.com/"
+              className={`${styles.socialLink} ${styles.snapchatSocialLink}`}
+            >
+              <i className="fa-brands fa-snapchat"></i>
+              <p>850M</p>
+            </Link>
           </section>
 
           {/* Informational text */}
           <section className={styles.informationalText}>
-            <p className={styles.description}>
+            <p className={styles.homeDescription}>
               Discover movies and TV shows with Reelix — your go-to platform for exploring the latest releases,
               trailers, ratings, and detailed metadata. Designed as a modern, fully responsive media discovery app,
               Reelix helps film fans stay updated on what's new, what's trending, and what's worth watching — all in one
@@ -159,11 +183,6 @@ function Home() {
 
           {/* Accordion */}
           <Accordion />
-
-          {/* CTA button */}
-          <Link to="/movies" className={styles.ctaButton}>
-            EXPLORE REELIX
-          </Link>
         </div>
       </main>
     </>
