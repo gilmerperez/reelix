@@ -1,33 +1,43 @@
 import logo from "/favicon.png";
 import styles from "./Home.module.css";
+import { useEffect, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import Accordion from "../../components/Accordion/Accordion";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { searchMovies, searchTVShows } from "../../utils/api";
 
 function Home() {
-  const [query, setQuery] = useState("");
+  // * Set page title
+  useEffect(() => {
+    document.title = "Reelix | Home";
+  }, []);
+
+  // * State hooks
   const navigate = useNavigate();
+  const [query, setQuery] = useState("");
 
+  // * Handle search
   const handleSearch = async () => {
+    // Check if query is empty
     if (!query.trim()) return;
-
+    // Try to search for movies and TV shows
     try {
       const [movies, tvShows] = await Promise.all([searchMovies(query), searchTVShows(query)]);
-
+      // Get the top movie and TV show
       const topMovie = movies?.[0];
       const topTV = tvShows?.[0];
 
-      // Prefer the result with higher vote count
       let result;
+      // If both movie and TV show are found, prefer the movie with higher vote count
       if (topMovie && topTV) {
         result = topMovie.vote_count >= topTV.vote_count ? { ...topMovie, type: "movie" } : { ...topTV, type: "tv" };
       } else if (topMovie) {
+        // If only one is found, prefer the movie
         result = { ...topMovie, type: "movie" };
       } else if (topTV) {
+        // If only one is found, prefer the TV show
         result = { ...topTV, type: "tv" };
       }
-
+      // If a result is found, navigate to the result page
       if (result) {
         navigate(`/${result.type}/${result.id}`);
       } else {
@@ -42,17 +52,19 @@ function Home() {
   return (
     <>
       <main>
-        <div className={`container ${styles.container}`}>
+        <div className={styles.homeContainer}>
           {/* Logo */}
-          <img src={logo} alt="Reelix Logo" className={styles.logo} />
-          {/* Heading */}
-          <h1 className={styles.heading}>Reelix</h1>
-          {/* Search Bar */}
+          <img src={logo} alt="Reelix Logo" className={styles.reelixLogo} />
+
+          {/* Title */}
+          <h1 className={styles.homeTitle}>Reelix</h1>
+
+          {/* Search bar */}
           <section className={styles.searchBar}>
             <input
               type="text"
-              placeholder="Enter Keywords..."
               value={query}
+              placeholder="Enter Keywords..."
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
             />
@@ -60,51 +72,52 @@ function Home() {
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
           </section>
-          {/* Social Links */}
+
+          {/* Social links */}
           <section className={styles.socialLinks}>
-            <a href="https://www.instagram.com/" target="_blank">
+            <a href="https://www.instagram.com/" rel="noopener noreferrer" target="_blank">
               <div className={`${styles.socialLink} ${styles.instagramSocialLink}`}>
                 <i className="fa-brands fa-instagram"></i>
                 <p>2B</p>
               </div>
             </a>
-            <a href="https://www.whatsapp.com/" target="_blank">
+            <a href="https://www.whatsapp.com/" rel="noopener noreferrer" target="_blank">
               <div className={`${styles.socialLink} ${styles.whatsappSocialLink}`}>
                 <i className="fa-brands fa-whatsapp"></i>
                 <p>3B</p>
               </div>
             </a>
-            <a href="https://www.facebook.com/" target="_blank">
+            <a href="https://www.facebook.com/" rel="noopener noreferrer" target="_blank">
               <div className={`${styles.socialLink} ${styles.facebookSocialLink}`}>
                 <i className="fa-brands fa-facebook-f"></i>
                 <p>3.07B</p>
               </div>
             </a>
-            <a href="https://www.youtube.com/" target="_blank">
+            <a href="https://www.youtube.com/" rel="noopener noreferrer" target="_blank">
               <div className={`${styles.socialLink} ${styles.youtubeSocialLink}`}>
                 <i className="fa-brands fa-youtube"></i>
                 <p>2.7B</p>
               </div>
             </a>
-            <a href="https://www.reddit.com/" target="_blank">
+            <a href="https://www.reddit.com/" rel="noopener noreferrer" target="_blank">
               <div className={`${styles.socialLink} ${styles.redditSocialLink}`}>
                 <i className="fa-brands fa-reddit-alien"></i>
                 <p>712M</p>
               </div>
             </a>
-            <a href="https://www.x.com/">
-              <div className={`${styles.socialLink} ${styles.xSocialLink}`} target="_blank">
+            <a href="https://www.x.com/" rel="noopener noreferrer" target="_blank">
+              <div className={`${styles.socialLink} ${styles.xSocialLink}`}>
                 <i className="fa-brands fa-x-twitter"></i>
                 <p>563M</p>
               </div>
             </a>
-            <a href="https://www.tiktok.com/" target="_blank">
+            <a href="https://www.tiktok.com/" rel="noopener noreferrer" target="_blank">
               <div className={`${styles.socialLink} ${styles.tiktokSocialLink}`}>
                 <i className="fa-brands fa-tiktok"></i>
                 <p>1.84B</p>
               </div>
             </a>
-            <a href="https://www.snapchat.com/" target="_blank">
+            <a href="https://www.snapchat.com/" rel="noopener noreferrer" target="_blank">
               <div className={`${styles.socialLink} ${styles.snapchatSocialLink}`}>
                 <i className="fa-brands fa-snapchat"></i>
                 <p>850M</p>
@@ -112,7 +125,7 @@ function Home() {
             </a>
           </section>
 
-          {/* Informational Text */}
+          {/* Informational text */}
           <section className={styles.informationalText}>
             <p className={styles.description}>
               Discover movies and TV shows with Reelix — your go-to platform for exploring the latest releases,
@@ -143,11 +156,13 @@ function Home() {
               providers like Netflix, Hulu, Prime Video, or Disney+.
             </p>
           </section>
-          {/* Review Text Accordion */}
+
+          {/* Accordion */}
           <Accordion />
-          {/* CTA Button */}
-          <Link to="/movies" className={styles.viewMovies}>
-            Explore Movies and TV Shows
+
+          {/* CTA button */}
+          <Link to="/movies" className={styles.ctaButton}>
+            EXPLORE REELIX
           </Link>
         </div>
       </main>

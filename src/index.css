@@ -113,16 +113,6 @@ main {
   background-color: var(--bg-color);
 }
 
-.mainContainer {
-  width: 100%;
-  display: flex;
-  margin: 0 auto;
-  max-width: 1200px;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-}
-
 /* Tablet responsiveness */
 @media (max-width: 768px) {
   main {
@@ -137,6 +127,9 @@ main {
   }
 }
 
+/* Container */
+
+/* Container */
 .container {
   width: 100%;
   margin: 0 auto;

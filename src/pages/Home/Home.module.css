@@ -1,73 +1,63 @@
-main {
-  padding: 2rem;
-}
-
-.container {
+.homeContainer {
+  width: 100%;
   display: flex;
+  margin: 0 auto;
+  max-width: 1200px;
   align-items: center;
   flex-direction: column;
   justify-content: center;
 }
 
-.logo {
-  height: 120px;
-  margin-bottom: 0.5rem;
+/* Logo */
+.reelixLogo {
+  height: 100px;
+  transition: 0.3s ease;
 }
 
-.heading {
+/* Title */
+.homeTitle {
   font-size: 3rem;
-  transition: 0.3s;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: hsl(355, 95%, 45%);
+  color: var(--primary);
+  transition: 0.3s ease;
+  margin-bottom: 0.25rem;
 }
 
-.heading:hover {
-  text-shadow: 0 0 30px hsl(355, 95%, 45%, 0.75);
+.homeTitle:hover {
+  text-shadow: var(--shadow-large);
 }
 
+/* Search bar */
 .searchBar {
   width: 100%;
   display: flex;
-  max-width: 80%;
   overflow: hidden;
-  border-radius: 5px;
-  margin-bottom: 1.5rem;
-  background-color: hsl(0, 0%, 10%);
+  margin-bottom: 1.25rem;
+  border-radius: 0.25rem;
 }
 
 .searchBar input {
   flex: 1;
+  width: 90%;
   height: 50px;
-  border: none;
-  outline: none;
-  color: white;
-  font-size: 20px;
-  padding-left: 16px;
-  background-color: hsl(0, 0%, 15%);
+  padding: 1rem;
+  font-size: 1.375rem;
+  color: var(--text-primary);
+  background-color: hsl(0, 0%, 10%);
 }
 
 .searchBar button {
-  width: 60px;
-  height: 50px;
-  border: none;
-  cursor: pointer;
-  font-size: 25px;
-  color: hsl(0, 0%, 5%);
-  transition: 0.3s ease-in;
-  background-color: hsl(355, 95%, 45%);
+  width: 10%;
+  font-size: 1.5rem;
+  transition: 0.3s ease;
+  color: var(--header-bg-color);
+  background-color: var(--primary);
 }
 
-.searchBar button:hover {
-  color: white;
-}
-
+/* Social links */
 .socialLinks {
   gap: 1rem;
-  width: 100%;
   display: flex;
-  max-width: 80%;
-  color: white;
+  min-width: 100%;
   flex-wrap: wrap;
   align-items: center;
   margin-bottom: 2rem;
@@ -75,15 +65,15 @@ main {
 }
 
 .socialLink {
-  gap: 0.5rem;
+  gap: 0.75rem;
   display: flex;
   font-weight: 500;
-  padding: 10px 15px;
-  border-radius: 5px;
   text-align: center;
   align-items: center;
+  padding: 0.75rem 1rem;
+  transition: 0.3s ease;
+  border-radius: 0.25rem;
   justify-content: center;
-  transition: 0.3s ease-in;
 }
 
 .socialLink:hover {
@@ -202,83 +192,74 @@ main {
   box-shadow: 0 0 15px #bebebe;
 }
 
+/* Informational text */
 .informationalText {
-  width: 80%;
-  color: white;
-  min-width: 80%;
-  margin-bottom: 1rem;
-  transition: 0.3s ease-in;
+  margin-bottom: 2rem;
+  transition: 0.3s ease;
 }
 
-.informationalText > .description {
-  padding: 1rem;
-  font-weight: 500;
+.informationalText .description {
+  padding: 1.5rem;
+  line-height: 1.25;
   font-size: 1.25rem;
   text-align: center;
-  border-radius: 10px;
-  margin-bottom: 1.5rem;
-  border: 1px solid hsl(355, 95%, 45%);
-  box-shadow: 0 0 20px hsl(355, 95%, 45%, 0.5);
+  margin-bottom: 2rem;
+  border-radius: 0.25rem;
+  box-shadow: var(--shadow-small);
+  border: 2px solid var(--primary);
+  background-color: var(--header-bg-color);
 }
 
 .informationalText .subheading {
   text-align: left;
-  font-weight: 600;
-  font-size: 1.15rem;
+  font-weight: 500;
+  font-size: 1.25rem;
+  margin-bottom: 0.15rem;
 }
 
 .informationalText .text {
   text-align: left;
-  font-weight: 400;
+  line-height: 1.25;
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+}
+
+.informationalText .text:not(:last-child) {
   margin-bottom: 1rem;
-  color: hsl(0, 0%, 80%);
 }
 
-.viewMovies {
+/* CTA button */
+.ctaButton {
+  padding: 1rem;
+  font-size: 2rem;
   margin-top: 2rem;
-  font-weight: 600;
-  font-size: 1.5rem;
-  padding: 1rem 2rem;
-  border-radius: 30px;
-  color: hsl(0, 0%, 5%);
-  transition: 0.3s ease-in;
-  background-color: hsl(355, 95%, 45%);
+  font-weight: 500;
+  border-radius: 1rem;
+  transition: 0.3s ease;
+  background-color: var(--primary);
 }
 
-.viewMovies:hover {
-  color: white;
+.ctaButton:hover {
+  box-shadow: var(--shadow-large);
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 0 20px hsl(355, 95%, 45%);
 }
 
+/* Tablet responsiveness */
 @media (max-width: 768px) {
-  main {
-    padding: 1.5rem;
+  .reelixLogo {
+    height: 85px;
   }
 
-  .logo {
-    height: 80px;
-  }
-
-  .heading {
-    font-size: 2.5rem;
-  }
-
-  .searchBar {
-    margin-bottom: 1.5rem;
+  .homeTitle {
+    font-size: 2.75rem;
   }
 
   .searchBar input {
-    height: 40px;
-    min-width: 80%;
-    font-size: 16px;
-    padding-left: 12px;
+    font-size: 1.25rem;
   }
 
   .searchBar button {
-    height: 40px;
-    min-width: 20%;
-    font-size: 20px;
+    font-size: 1.375rem;
   }
 
   .socialLinks {
@@ -300,57 +281,42 @@ main {
     padding: 10px 15px;
   }
 
-  .informationalText > .description,
-  .reviewText > .description {
+  .informationalText .description {
+    padding: 1.25rem;
+    font-size: 1.15rem;
+  }
+
+  .informationalText .subheading {
+    font-size: 1.15rem;
+  }
+
+  .informationalText .text {
     font-size: 1rem;
-    margin-bottom: 1.25rem;
   }
 
-  .informationalText .subheading,
-  .reviewText .subheading {
-    font-size: 1rem;
-  }
-
-  .informationalText .text,
-  .reviewText .text {
-    font-size: 0.85rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .viewMovies {
-    font-size: 1.25rem;
-    padding: 0.75rem 1.5rem;
+  .ctaButton {
+    font-size: 1.5rem;
   }
 }
 
+/* Mobile responsiveness */
 @media (max-width: 480px) {
-  main {
-    padding: 1rem;
+  .reelixLogo {
+    height: 75px;
   }
 
-  .logo {
-    height: 60px;
-  }
-
-  .heading {
-    font-size: 1.75rem;
-  }
-
-  .searchBar {
-    margin-bottom: 1rem;
+  .homeTitle {
+    font-size: 2.5rem;
   }
 
   .searchBar input {
-    height: 40px;
-    min-width: 80%;
-    font-size: 14px;
-    padding-left: 12px;
+    width: 85%;
+    font-size: 1.15rem;
   }
 
   .searchBar button {
-    height: 40px;
-    min-width: 20%;
-    font-size: 18px;
+    width: 15%;
+    font-size: 1.25rem;
   }
 
   .socialLinks {
@@ -372,34 +338,16 @@ main {
     padding: 8px 13px;
   }
 
-  .viewMovies:hover {
+  .ctaButton:hover {
     transform: scale(1.1);
   }
 
-  .informationalText {
-    margin-bottom: 1.5rem;
-  }
-
-  .informationalText > .description,
-  .reviewText > .description {
-    font-size: 0.85rem;
-    margin-bottom: 1rem;
-  }
-
-  .informationalText .subheading,
-  .reviewText .subheading {
-    font-size: 0.85rem;
-  }
-
-  .informationalText .text,
-  .reviewText .text {
-    font-size: 0.75rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .viewMovies {
+  .informationalText .description {
+    padding: 1rem;
     font-size: 1rem;
-    font-weight: 500;
-    padding: 0.5rem 0.75rem;
+  }
+
+  .ctaButton {
+    font-size: 1.25rem;
   }
 }

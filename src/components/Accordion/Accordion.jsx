@@ -42,28 +42,35 @@ const accordionData = [
 ];
 
 export default function Accordion() {
+  // * State hooks
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // * Toggle accordion
   const toggleAccordion = (index) => {
     setActiveIndex(index === activeIndex ? null : index);
   };
 
   return (
-    <div className={styles.accordion}>
-      {accordionData.map((item, index) => (
-        <div key={index} className={styles.accordionItem}>
-          <button
-            className={`${styles.accordionHeader} ${activeIndex === index ? styles.active : ""}`}
-            onClick={() => toggleAccordion(index)}
-          >
-            {item.title}
-            <span className={styles.icon}>{activeIndex === index ? "−" : "+"}</span>
-          </button>
-          <div className={`${styles.accordionBody} ${activeIndex === index ? styles.open : ""}`}>
-            <p>{item.content}</p>
+    <>
+      <div className={styles.accordionComponent}>
+        {accordionData.map((item, index) => (
+          // * Accordion item
+          <div key={index} className={styles.accordionItem}>
+            {/* Accordion header */}
+            <button
+              onClick={() => toggleAccordion(index)}
+              className={`${styles.accordionHeader} ${activeIndex === index ? styles.active : ""}`}
+            >
+              {item.title}
+              <span className={styles.icon}>{activeIndex === index ? "−" : "+"}</span>
+            </button>
+            {/* Accordion body */}
+            <div className={`${styles.accordionBody} ${activeIndex === index ? styles.open : ""}`}>
+              <p>{item.content}</p>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 }
