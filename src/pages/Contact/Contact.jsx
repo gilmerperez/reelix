@@ -1,53 +1,74 @@
-import { useEffect } from "react";
 import styles from "./Contact.module.css";
+import { useEffect, useState } from "react";
 
 function Contact() {
-  // Change page title
+  // * Change page title
   useEffect(() => {
     document.title = "Reelix | Contact";
   }, []);
 
+  // * Subject and message state
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  // * Send email
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const email = "gilmer2002@outlook.com";
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+    window.location.href = mailtoLink;
+  };
+
   return (
-    <main>
-      <div className={`container ${styles.container}`}>
-        {/* Heading */}
-        <h1 className={styles.heading}>Contact Us</h1>
-        {/* Description */}
-        <p className={styles.subheading}>
-          Have a question or feature request? We're here to help. Submit the form below and we'll get back to you as
-          soon as possible.
-        </p>
-        {/* Form */}
-        <section className={styles.formSection}>
-          <form action="mailto:gilmer2002@outlook.com" method="post" encType="text/plain">
-            {/* Name Field */}
-            <div className={`${styles.formGroup} ${styles.formFloating}`}>
-              <input type="text" id="name" placeholder="Name" required className={styles.formControl} />
-              <label htmlFor="name">Name</label>
-            </div>
-            {/* Subject Field */}
-            <div className={`${styles.formGroup} ${styles.formFloating}`}>
-              <input type="text" id="subject" placeholder="Subject" required className={styles.formControl} />
-              <label htmlFor="subject">Subject</label>
-            </div>
-            {/* Email Address Field */}
-            <div className={`${styles.formGroup} ${styles.formFloating}`}>
-              <input type="email" id="email" placeholder="Email Address" required className={styles.formControl} />
-              <label htmlFor="email">Email Address</label>
-            </div>
-            {/* Message Field */}
-            <div className={`${styles.formGroup} ${styles.formFloating}`}>
-              <textarea id="message" placeholder="Message" required className={styles.formControl}></textarea>
-              <label htmlFor="message">Message</label>
-            </div>
-            {/* Send Message Button */}
-            <button type="submit" className={styles.submitBtn}>
-              Send Message <i className="fa-solid fa-paper-plane"></i>
-            </button>
-          </form>
-        </section>
-      </div>
-    </main>
+    <>
+      <main>
+        <div className={styles.contactContainer}>
+          {/* Title */}
+          <h1 className={styles.contactTitle}>Contact Us</h1>
+          {/* Description */}
+          <p className={styles.contactDescription}>
+            Have a question or feature request? We're here to help. Submit the form below and we'll get back to you as
+            soon as possible.
+          </p>
+
+          {/* Contact form */}
+          <section className={styles.formContainer}>
+            <form onSubmit={handleSubmit}>
+              {/* Subject field */}
+              <div className={`${styles.formGroup} ${styles.formFloating}`}>
+                <input
+                  required
+                  type="text"
+                  id="subject"
+                  value={subject}
+                  placeholder="Subject"
+                  className={styles.formControl}
+                  onChange={(e) => setSubject(e.target.value)}
+                />
+                <label htmlFor="subject">Subject</label>
+              </div>
+              {/* Message field */}
+              <div className={`${styles.formGroup} ${styles.formFloating}`}>
+                <textarea
+                  required
+                  id="message"
+                  value={message}
+                  placeholder="Message"
+                  className={styles.formControl}
+                  onChange={(e) => setMessage(e.target.value)}
+                ></textarea>
+                <label htmlFor="message">Message</label>
+              </div>
+              {/* Submit button */}
+              <button type="submit" className={styles.submitBtn}>
+                Send Message
+                <i className="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </section>
+        </div>
+      </main>
+    </>
   );
 }
 
