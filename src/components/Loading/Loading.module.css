@@ -1,23 +1,7 @@
-.loadingContainer {
-  user-select: none;
-  text-align: center;
-  color: hsl(355, 95%, 45%);
-  text-shadow: 0 0 30px hsl(355, 95%, 45%, 0.75);
-}
-
 .loadingText {
   font-size: 3rem;
-  animation: 1.5s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-    text-shadow: 0 0 30px hsl(355, 95%, 45%, 0.75);
-  }
-  50% {
-    opacity: 0.6;
-    text-shadow: 0 0 10px hsl(355, 95%, 45%, 0.4);
-  }
+  user-select: none;
+  text-align: center;
+  color: var(--primary);
+  text-shadow: var(--shadow-large);
 }
