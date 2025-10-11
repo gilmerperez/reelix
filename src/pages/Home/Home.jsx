@@ -87,21 +87,22 @@ function Home() {
             <Link
               target="_blank"
               rel="noopener noreferrer"
-              to="https://www.whatsapp.com/"
-              className={`${styles.socialLink} ${styles.whatsappSocialLink}`}
-            >
-              <i className="fa-brands fa-whatsapp"></i>
-              <p>3B</p>
-            </Link>
-            <Link
-              target="_blank"
-              rel="noopener noreferrer"
               to="https://www.facebook.com/"
               className={`${styles.socialLink} ${styles.facebookSocialLink}`}
             >
               <i className="fa-brands fa-facebook-f"></i>
               <p>3.07B</p>
             </Link>
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              to="https://www.whatsapp.com/"
+              className={`${styles.socialLink} ${styles.whatsappSocialLink}`}
+            >
+              <i className="fa-brands fa-whatsapp"></i>
+              <p>3B</p>
+            </Link>
+
             <Link
               target="_blank"
               rel="noopener noreferrer"
@@ -146,6 +147,15 @@ function Home() {
             >
               <i className="fa-brands fa-snapchat"></i>
               <p>850M</p>
+            </Link>
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              to="https://www.telegram.com/"
+              className={`${styles.socialLink} ${styles.telegramSocialLink}`}
+            >
+              <i className="fa-brands fa-telegram"></i>
+              <p>923M</p>
             </Link>
           </section>
 

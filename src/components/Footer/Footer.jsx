@@ -78,22 +78,22 @@ function Footer() {
               <h6 className={styles.navHeader}>Contact</h6>
               <nav className={styles.navItems}>
                 {/* Phone number */}
-                <Link className={styles.contactLink} to="tel:+14073501805">
-                  +1 (407) 350-1805
+                <Link className={styles.contactLink} to="tel:+14085403700">
+                  (408) 540-3700
                 </Link>
                 {/* Email */}
-                <a className={styles.contactLink} to="mailto:gilmer2002@outlook.com">
-                  info@members.reelix.com
-                </a>
+                <Link className={styles.contactLink} to="mailto:reelix@info.com">
+                  reelix@info.com
+                </Link>
                 {/* Address */}
-                <a
+                <Link
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.contactLink}
                   href="https://www.google.com/maps/place/Netflix+-+Building+E+-+Main+Lobby/@37.2570665,-121.9666096,778m/data=!3m1!1e3!4m6!3m5!1s0x808e35a0d3457091:0xdebdf28350f4befc!8m2!3d37.2570306!4d-121.9639833!16s%2Fg%2F11b8zb4lq9?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D"
                 >
                   121 Albright Wy, Los Gatos, CA 95032
-                </a>
+                </Link>
               </nav>
             </section>
           </div>
