@@ -1,11 +1,10 @@
-.filters {
+.filterContainer {
   gap: 1rem;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  max-width: 800px;
+  margin: 2rem 0rem;
   align-items: center;
-  margin-bottom: 1.5rem;
   justify-content: center;
 }
 
@@ -13,25 +12,40 @@ select {
   flex: 1;
   display: flex;
   cursor: pointer;
-  font-size: 1rem;
   padding: 0.75rem;
-  min-width: 180px;
   appearance: none;
-  text-align: center;
-  border-radius: 5px;
-  color: hsl(0, 0%, 90%);
-  transition: 0.3s ease-in;
-  background-color: hsl(0, 0%, 5%);
-  border: 1px solid hsl(355, 95%, 45%);
+  font-size: 1.25rem;
+  transition: 0.3s ease;
+  border-radius: 0.25rem;
+  color: var(--text-primary);
+  border: 2px solid var(--primary);
+  background-color: var(--header-bg-color);
+}
+
+select:hover {
+  box-shadow: var(--shadow-small);
 }
 
 select:focus {
-  outline: none;
-  box-shadow: 0 0 10px hsl(355, 95%, 45%, 0.75);
+  box-shadow: var(--shadow-large);
 }
 
 option {
   text-align: center;
-  color: hsl(0, 0%, 90%);
-  background-color: hsl(0, 0%, 10%);
+  color: var(--text-primary);
+  background-color: var(--header-bg-color);
+}
+
+/* Tablet responsiveness */
+@media (max-width: 768px) {
+  select {
+    font-size: 1.15rem;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  select {
+    font-size: 1rem;
+  }
 }

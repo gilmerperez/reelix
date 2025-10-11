@@ -1,45 +1,65 @@
 .paginationContainer {
   display: flex;
   margin-top: 2rem;
+  transition: 0.3s ease;
   justify-content: center;
 }
 
 .paginationItems {
   gap: 1rem;
-  padding: 0;
   display: flex;
   flex-wrap: wrap;
-  list-style: none;
   align-items: center;
   justify-content: center;
 }
 
 .pageItem {
-  border-radius: 5px;
+  border-radius: 0.25rem;
 }
 
 .pageLink {
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 5px;
-  padding: 0.5rem 1rem;
-  transition: 0.2s ease-in;
-  background-color: hsl(0, 0%, 5%);
-  border: 2px solid hsl(355, 95%, 45%);
+  font-weight: 500;
+  font-size: 1.25rem;
+  transition: 0.3s ease;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--primary);
+  background-color: var(--header-bg-color);
 }
 
 .pageLink:hover:not(:disabled) {
   transform: translateY(-5px);
-  background-color: hsl(355, 95%, 45%);
+  box-shadow: var(--shadow-small);
+  background-color: var(--primary);
 }
 
 .active .pageLink {
-  color: white;
-  background-color: hsl(355, 95%, 45%);
+  background-color: var(--primary);
 }
 
 .disabled .pageLink {
   opacity: 0.5;
   pointer-events: none;
+}
+
+/* Tablet responsiveness */
+@media (max-width: 768px) {
+  .paginationContainer {
+    margin-top: 1.75rem;
+  }
+
+  .pageLink {
+    font-size: 1.15rem;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .paginationContainer {
+    margin-top: 1.5rem;
+  }
+
+  .pageLink {
+    font-size: 1rem;
+  }
 }

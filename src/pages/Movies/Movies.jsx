@@ -4,11 +4,16 @@ import Loading from "../../components/Loading/Loading";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import Pagination from "../../components/Pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { fetchFilteredContent, searchMovies } from "../../utils/api";
-import { useState, useEffect, useMemo, useCallback } from "react";
 
 function Movies() {
-  // State hooks
+  // * Change page title
+  useEffect(() => {
+    document.title = "Reelix | Movies";
+  }, []);
+
+  // * State hooks
   const [page, setPage] = useState(1);
   const [error, setError] = useState("");
   const [movies, setMovies] = useState([]);
@@ -17,12 +22,7 @@ function Movies() {
   const [totalResults, setTotalResults] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Change page title
-  useEffect(() => {
-    document.title = "Reelix | Movies";
-  }, []);
-
-  // Extract filters from the URL parameters, using useMemo to prevent unnecessary effect triggers
+  // * Extract filters from the URL parameters, using useMemo to prevent unnecessary effect triggers
   const filters = useMemo(
     () => ({
       year: searchParams.get("year") || "",
@@ -32,23 +32,27 @@ function Movies() {
     [searchParams]
   );
 
-  // Calculates total pages based on TMDB results
+  // * Calculates total pages based on TMDB results
   const RESULTS_PER_PAGE = 52;
   const MAX_PAGES_TO_SHOW = 10;
   const totalPages = Math.min(Math.ceil(totalResults / RESULTS_PER_PAGE), MAX_PAGES_TO_SHOW);
 
-  // Fetch filtered content on filter change, not search change. With abort controller for cleanup
+  // * Fetch filtered content on filter change, not search change. With abort controller for cleanup
   useEffect(() => {
     const controller = new AbortController();
 
+    // Fetch filtered content
     async function getData() {
       setError("");
       setLoading(true);
+      // Try to fetch filtered content
       try {
         const data = await fetchFilteredContent("movie", { ...filters, page }, RESULTS_PER_PAGE, controller.signal);
         setMovies(data.results || data);
         setTotalResults(data.totalResults || (data.results ? data.results.length : data.length));
+        // If successful, set movies and total results
       } catch (error) {
+        // If failed, set error
         if (error.name !== "AbortError") {
           console.error("Failed to fetch movies", error);
           setError("Sorry, something went wrong while fetching the latest movies");
@@ -57,13 +61,15 @@ function Movies() {
         setLoading(false);
       }
     }
+    // Fetch filtered content
     getData();
+    // Cleanup
     return () => {
       controller.abort();
     };
   }, [filters, page]);
 
-  // When user uses filters, wrapped in useCallback
+  // * When user uses filters, wrapped in useCallback
   const handleFilterChange = useCallback(
     (updatedFilters) => {
       setPage(1); // Reset to first page on filter change
@@ -74,35 +80,38 @@ function Movies() {
     [setSearchParams]
   );
 
-  // Manual input update, wrapped in useCallback
+  // * Manual input update, wrapped in useCallback
   const handleSearchInputChange = useCallback((event) => {
     setSearchTerm(event.target.value);
   }, []);
 
-  // Keyword search, wrapped in useCallback
+  // * Keyword search, wrapped in useCallback
   const handleSearch = useCallback(async () => {
     if (!searchTerm.trim()) {
       setError("Please enter a keyword to search");
       return;
     }
-
+    // Set error to empty string
     setError("");
+    // Set loading to true
     setLoading(true);
-
+    // Try to search movies
     try {
       const data = await searchMovies(searchTerm);
       setPage(1); // Reset to first page
       setMovies(data.results || data);
       setTotalResults(data.totalResults || (data.results ? data.results.length : data.length));
+      // If successful, set movies and total results
     } catch (error) {
       console.error("Search failed", error);
       setError("Sorry, something went wrong while searching");
+      // If failed, set error
     } finally {
       setLoading(false);
     }
   }, [searchTerm]);
 
-  // On page change, wrapped in useCallback
+  // * On page change, wrapped in useCallback
   const handlePageChange = useCallback(
     (newPage) => {
       if (newPage < 1 || newPage > totalPages) return;
@@ -115,19 +124,22 @@ function Movies() {
   return (
     <>
       <main>
-        <div className={`container ${styles.container}`}>
-          {/* Heading */}
-          <h1 className={styles.heading}>Movies</h1>
-          {/* Error Message */}
-          {error && <div className={styles.error}>{error}</div>}
-          {/* Search Bar */}
+        <div className={styles.moviesContainer}>
+          {/* Title */}
+          <h1 className={styles.moviesTitle}>Movies</h1>
+
+          {/* Error message */}
+          {error && <div className={styles.errorMessage}>{error}</div>}
+
+          {/* Search bar */}
           <section className={styles.searchBar}>
             <input
               type="text"
-              placeholder="Enter Keywords..."
               value={searchTerm}
+              placeholder="Enter keywords..."
               onChange={handleSearchInputChange}
               onKeyDown={(event) => {
+                // If enter key is pressed, search movies
                 if (event.key === "Enter") handleSearch();
               }}
             />
@@ -135,13 +147,15 @@ function Movies() {
               <i className="fa-solid fa-film"></i>
             </button>
           </section>
-          {/* Loading or Results */}
+
+          {/* Loading or results */}
           {loading ? (
             <Loading />
           ) : (
             <>
               {/* Filters */}
               <Filter onFilterChange={handleFilterChange} initialFilters={filters} />
+
               {/* Movie Cards */}
               <section className={styles.movieCards}>
                 {movies.length > 0 ? (
@@ -152,6 +166,7 @@ function Movies() {
                   </div>
                 )}
               </section>
+
               {/* Pagination */}
               {totalPages > 1 && <Pagination page={page} onPageChange={handlePageChange} totalPages={totalPages} />}
             </>
