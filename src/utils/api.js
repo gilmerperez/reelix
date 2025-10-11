@@ -19,20 +19,24 @@ export async function fetchFilteredContent(
   let results = [];
   let totalResults = 0;
 
+  // * Fetch filtered content
   for (let i = 0; i < totalPagesNeeded; i++) {
+    // Calculate API page
     const apiPage = (page - 1) * totalPagesNeeded + i + 1;
-
+    // Build URL
     let url = `${BASE_URL}/discover/${type}?api_key=${API_KEY}&language=en-US&page=${apiPage}&sort_by=popularity.desc`;
-
+    // Add year filter
     if (year) url += `&${type === "movie" ? "primary_release_year" : "first_air_date_year"}=${year}`;
+    // Add genre filter
     if (genre) url += `&with_genres=${genre}`;
+    // Add country filter
     if (country) url += `&region=${country}`; // For release region
-
+    // Try to fetch data
     try {
       const response = await fetch(url);
       if (!response.ok) throw new Error(`Failed to fetch ${type} page ${apiPage}`);
       const json = await response.json();
-
+      // If first page, set total results
       if (i === 0) totalResults = json.total_results;
       results.push(...json.results);
     } catch (err) {
@@ -43,6 +47,7 @@ export async function fetchFilteredContent(
   // * Enrich data with additional details
   const enriched = await Promise.all(
     results.slice(0, resultsPerPage).map(async (item) => {
+      // Try to enrich data
       try {
         if (type === "movie") {
           const { runtime, certification } = await fetchMovieDetails(item.id);
@@ -52,6 +57,7 @@ export async function fetchFilteredContent(
             certification,
             genre_names: item.genre_ids.map((id) => genreMap[id] || "Unknown"),
           };
+          // If successful, return enriched data
         } else {
           const { number_of_seasons, first_air_date } = await fetchTVDetails(item.id);
           return {
@@ -61,30 +67,32 @@ export async function fetchFilteredContent(
             genre_names: item.genre_ids.map((id) => genreMap[id] || "Unknown"),
           };
         }
+        // If failed, return original data
       } catch (err) {
         console.warn(`Failed to enrich ${type} ID ${item.id}`, err);
         return { ...item };
       }
     })
   );
-
+  // If successful, return results and total results
   return { results: enriched, totalResults };
 }
 
 // * Genre map fetcher with caching by type
 async function fetchGenreMap(type = "movie") {
+  // If genre cache exists, return it
   if (genreCache[type]) return genreCache[type];
-
+  // Try to fetch genre map
   try {
     const res = await fetch(`${BASE_URL}/genre/${type}/list?api_key=${API_KEY}&language=en-US`);
     if (!res.ok) throw new Error(`Failed to fetch genre list for ${type}`);
     const data = await res.json();
-
+    // Create map
     const map = {};
     for (const genre of data.genres) {
       map[genre.id] = genre.name;
     }
-
+    // Set genre cache
     genreCache[type] = map;
     return map;
   } catch (err) {

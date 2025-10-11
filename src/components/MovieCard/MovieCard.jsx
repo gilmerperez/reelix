@@ -2,26 +2,27 @@ import { Link } from "react-router-dom";
 import styles from "./MovieCard.module.css";
 
 function MovieCard({ movie }) {
-  const { id, poster_path, title, release_date, certification, genre_names, overview, runtime } = movie;
+  // * Destructure movie
+  const { runtime, id, title, poster_path, release_date, certification, genre_names, overview } = movie;
 
-  // Calculate hours and minutes from runtime
+  // * Calculate hours and minutes from runtime
   const minutes = runtime % 60;
   const hours = Math.floor(runtime / 60);
 
   return (
     <>
-      <Link to={`/movie/${id}`} className={styles.movieCardLink}>
+      <Link to={`/movie/${id}`}>
         <div className={styles.movieCard}>
-          {/* Movie Poster */}
+          {/* Movie poster */}
           <img
-            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
             alt={`${title} Poster`}
             className={styles.moviePoster}
+            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
           />
           <div className={styles.movieCardContent}>
-            {/* Movie Title */}
+            {/* Movie title */}
             <h2 className={styles.movieTitle}>{title}</h2>
-            {/* Movie Metadata: Release Year, Certification, Runtime */}
+            {/* Movie metadata: release year, certification, runtime */}
             <div className={styles.movieMeta}>
               <h3 className={styles.movieYear}>{release_date?.split("-")[0]}</h3>
               <h3 className={styles.movieRating}>{certification}</h3>
@@ -30,9 +31,9 @@ function MovieCard({ movie }) {
                 {minutes}m
               </h3>
             </div>
-            {/* Movie Genres */}
+            {/* Movie genres */}
             <h3 className={styles.movieGenre}>{genre_names.join(" / ")}</h3>
-            {/* Movie Description */}
+            {/* Movie description */}
             <p className={styles.movieDescription}>{overview}</p>
           </div>
         </div>
