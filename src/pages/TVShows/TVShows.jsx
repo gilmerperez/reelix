@@ -4,11 +4,16 @@ import Loading from "../../components/Loading/Loading";
 import Pagination from "../../components/Pagination/Pagination";
 import TVShowCard from "../../components/TV Show Card/TVShowCard";
 import { useSearchParams } from "react-router-dom";
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { fetchFilteredContent, searchTVShows } from "../../utils/api";
 
 function TVShows() {
-  // State hooks
+  // * Change page title
+  useEffect(() => {
+    document.title = "Reelix | TV Shows";
+  }, []);
+
+  // * State hooks
   const [page, setPage] = useState(1);
   const [error, setError] = useState("");
   const [tvShows, setTVShows] = useState([]);
@@ -17,12 +22,7 @@ function TVShows() {
   const [totalResults, setTotalResults] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Change page title
-  useEffect(() => {
-    document.title = "Reelix | TV Shows";
-  }, []);
-
-  // Extract filters from the URL parameters, using useMemo to prevent unnecessary effect triggers
+  // * Extract filters from the URL parameters, using useMemo to prevent unnecessary effect triggers
   const filters = useMemo(
     () => ({
       year: searchParams.get("year") || "",
@@ -32,22 +32,26 @@ function TVShows() {
     [searchParams]
   );
 
-  // Calculates total pages based on TMDB results
+  // * Calculates total pages based on TMDB results
   const RESULTS_PER_PAGE = 52;
   const MAX_PAGES_TO_SHOW = 10;
   const totalPages = Math.min(Math.ceil(totalResults / RESULTS_PER_PAGE), MAX_PAGES_TO_SHOW);
 
+  // * Fetch filtered content on filter change, not search change, with abort controller for cleanup
   useEffect(() => {
     const controller = new AbortController();
-
+    // Fetch filtered content
     async function getData() {
       setError("");
       setLoading(true);
+      // Try to fetch filtered content
       try {
         const data = await fetchFilteredContent("tv", { ...filters, page }, RESULTS_PER_PAGE, controller.signal);
         setTVShows(data.results || data);
         setTotalResults(data.totalResults || (data.results ? data.results.length : data.length));
+        // If successful, set tv shows and total results
       } catch (error) {
+        // If failed, set error
         if (error.name !== "AbortError") {
           console.error("Failed to fetch tv shows", error);
           setError("Sorry, something went wrong while fetching the latest tv shows");
@@ -56,13 +60,15 @@ function TVShows() {
         setLoading(false);
       }
     }
+    // Fetch filtered content
     getData();
+    // Cleanup
     return () => {
       controller.abort();
     };
   }, [filters, page]);
 
-  // When user uses filters, wrapped in useCallback
+  // * When user uses filters, wrapped in useCallback
   const handleFilterChange = useCallback(
     (updatedFilters) => {
       setPage(1); // Reset to first page on filter change
@@ -73,35 +79,38 @@ function TVShows() {
     [setSearchParams]
   );
 
-  // Manual input update, wrapped in useCallback
+  // * Manual input update, wrapped in useCallback
   const handleSearchInputChange = useCallback((event) => {
     setSearchTerm(event.target.value);
   }, []);
 
-  // Keyword search, wrapped in useCallback
+  // * Keyword search, wrapped in useCallback
   const handleSearch = useCallback(async () => {
     if (!searchTerm.trim()) {
       setError("Please enter a keyword to search");
       return;
     }
-
+    // Set error to empty string
     setError("");
+    // Set loading to true
     setLoading(true);
-
+    // Try to search tv shows
     try {
       const data = await searchTVShows(searchTerm);
       setPage(1); // Reset to first page
       setTVShows(data.results || data);
       setTotalResults(data.totalResults || (data.results ? data.results.length : data.length));
+      // If successful, set tv shows and total results
     } catch (error) {
       console.error("Search failed", error);
       setError("Sorry, something went wrong while searching");
+      // If failed, set error
     } finally {
       setLoading(false);
     }
   }, [searchTerm]);
 
-  // On page change, wrapped in useCallback
+  // * On page change, wrapped in useCallback
   const handlePageChange = useCallback(
     (newPage) => {
       if (newPage < 1 || newPage > totalPages) return;
@@ -114,19 +123,22 @@ function TVShows() {
   return (
     <>
       <main>
-        <div className={`container ${styles.container}`}>
-          {/* Heading */}
-          <h1 className={styles.heading}>TV Shows</h1>
-          {/* Error Message */}
-          {error && <div className={styles.error}>{error}</div>}
-          {/* Search Bar */}
+        <div className={styles.tvShowsContainer}>
+          {/* Title */}
+          <h1 className={styles.tvShowsTitle}>TV Shows</h1>
+
+          {/* Error message */}
+          {error && <div className={styles.errorMessage}>{error}</div>}
+
+          {/* Search bar */}
           <section className={styles.searchBar}>
             <input
               type="text"
-              placeholder="Enter Keywords..."
               value={searchTerm}
+              placeholder="Search TV Shows"
               onChange={handleSearchInputChange}
               onKeyDown={(event) => {
+                // If enter key is pressed, search tv shows
                 if (event.key === "Enter") handleSearch();
               }}
             />
@@ -134,14 +146,16 @@ function TVShows() {
               <i className="fa-solid fa-tv"></i>
             </button>
           </section>
-          {/* Loading or Results */}
+
+          {/* Loading or results */}
           {loading ? (
             <Loading />
           ) : (
             <>
               {/* Filters */}
               <Filter onFilterChange={handleFilterChange} initialFilters={filters} />
-              {/* TV Show Cards */}
+
+              {/* TV show cards */}
               <section className={styles.tvShowCards}>
                 {tvShows.length > 0 ? (
                   tvShows.map((show, index) => <TVShowCard key={`${show.id}-${index}`} show={show} />)
@@ -151,6 +165,7 @@ function TVShows() {
                   </div>
                 )}
               </section>
+
               {/* Pagination */}
               {totalPages > 1 && <Pagination page={page} onPageChange={handlePageChange} totalPages={totalPages} />}
             </>

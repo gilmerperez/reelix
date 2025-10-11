@@ -40,7 +40,6 @@ function Movies() {
   // * Fetch filtered content on filter change, not search change. With abort controller for cleanup
   useEffect(() => {
     const controller = new AbortController();
-
     // Fetch filtered content
     async function getData() {
       setError("");
@@ -136,7 +135,7 @@ function Movies() {
             <input
               type="text"
               value={searchTerm}
-              placeholder="Enter keywords..."
+              placeholder="Search Movies"
               onChange={handleSearchInputChange}
               onKeyDown={(event) => {
                 // If enter key is pressed, search movies
@@ -156,7 +155,7 @@ function Movies() {
               {/* Filters */}
               <Filter onFilterChange={handleFilterChange} initialFilters={filters} />
 
-              {/* Movie Cards */}
+              {/* Movie cards */}
               <section className={styles.movieCards}>
                 {movies.length > 0 ? (
                   movies.map((movie, index) => <MovieCard key={`${movie.id}-${index}`} movie={movie} />)

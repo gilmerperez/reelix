@@ -1,30 +1,30 @@
-main {
-  padding: 2rem;
-}
-
-.container {
+.tvShowsContainer {
+  width: 100%;
   display: flex;
+  margin: 0 auto;
+  max-width: 1200px;
   align-items: center;
   flex-direction: column;
   justify-content: center;
 }
 
-.heading {
-  font-size: 3rem;
+/* Title */
+.tvShowsTitle {
   font-weight: 700;
+  font-size: 3.5rem;
   text-align: center;
-  margin-bottom: 1.25rem;
-  transition: 0.3s ease-in;
-  color: hsl(355, 95%, 45%);
+  color: var(--primary);
+  transition: 0.3s ease;
+  margin-bottom: 0.5rem;
 }
 
-.heading:hover {
-  text-shadow: 0 0 30px hsl(355, 95%, 45%, 0.75);
+.tvShowsTitle:hover {
+  text-shadow: var(--shadow-large);
 }
 
-.error {
+/* Error message */
+.errorMessage {
   padding: 1rem;
-  color: white;
   font-size: 1.25rem;
   text-align: center;
   border-radius: 5px;
@@ -32,59 +32,51 @@ main {
   background-color: hsla(355, 95%, 45%, 0.75);
 }
 
+/* Search bar */
 .searchBar {
   width: 100%;
   display: flex;
   overflow: hidden;
-  max-width: 800px;
-  border-radius: 5px;
-  margin-bottom: 1.5rem;
-  background-color: hsl(0, 0%, 10%);
+  border-radius: 0.25rem;
 }
 
 .searchBar input {
   flex: 1;
+  width: 90%;
   height: 50px;
-  border: none;
-  outline: none;
-  color: white;
-  font-size: 20px;
-  padding-left: 16px;
-  background-color: hsl(0, 0%, 15%);
+  padding: 1rem;
+  font-size: 1.375rem;
+  transition: 0.3s ease;
+  color: var(--text-primary);
+  background-color: hsl(0, 0%, 10%);
 }
 
 .searchBar button {
-  width: 60px;
-  height: 50px;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-  color: hsl(0, 0%, 5%);
-  transition: 0.3s ease-in;
-  background-color: hsl(355, 95%, 45%);
+  width: 10%;
+  font-size: 1.5rem;
+  transition: 0.3s ease;
+  color: var(--header-bg-color);
+  background-color: var(--primary);
 }
 
-.searchBar button:hover {
-  color: white;
-}
-
+/* TV show cards */
 .tvShowCards {
+  gap: 1rem;
   width: 100%;
-  gap: 1.25rem;
   display: grid;
+  transition: 0.3s ease;
   grid-template-columns: repeat(4, 1fr);
 }
 
 .emptyState {
-  padding: 2rem;
-  color: white;
-  font-size: 1.25rem;
+  font-weight: 500;
+  font-size: 1.15rem;
   text-align: center;
-  border-radius: 10px;
-  grid-column: 1 / -1;
-  background-color: hsl(0, 0%, 10%);
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
 }
 
+/* Desktop responsiveness */
 @media (max-width: 1200px) {
   .tvShowCards {
     grid-template-columns: repeat(3, 1fr);
@@ -97,20 +89,40 @@ main {
   }
 }
 
+/* Tablet responsiveness */
+@media (max-width: 768px) {
+  .tvShowsTitle {
+    font-size: 2.75rem;
+  }
+
+  .searchBar input {
+    font-size: 1.25rem;
+  }
+
+  .searchBar button {
+    font-size: 1.375rem;
+  }
+}
+
 @media (max-width: 600px) {
   .tvShowCards {
     grid-template-columns: repeat(1, 1fr);
   }
+}
 
-  .heading {
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .tvShowsTitle {
     font-size: 2.5rem;
   }
 
   .searchBar input {
-    font-size: 16px;
+    width: 85%;
+    font-size: 1.15rem;
   }
 
   .searchBar button {
-    font-size: 18px;
+    width: 15%;
+    font-size: 1.25rem;
   }
 }
