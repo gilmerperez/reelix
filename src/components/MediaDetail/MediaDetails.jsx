@@ -66,10 +66,15 @@ function MediaDetails({ media }) {
               <strong>Producers:</strong> {producers.join(", ")}
             </p>
           )}
-          {/* Release date or first air date */}
-          {release_date || first_air_date ? (
+          {/* Release date */}
+          {release_date ? (
             <p>
               <strong>Release Date:</strong> {release_date}
+            </p>
+          ) : null}
+          {/* First air date */}
+          {first_air_date ? (
+            <p>
               <strong>First Air Date:</strong> {first_air_date}
             </p>
           ) : null}
