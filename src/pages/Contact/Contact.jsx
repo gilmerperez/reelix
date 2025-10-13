@@ -45,7 +45,7 @@ function Contact() {
                   className={styles.formControl}
                   onChange={(e) => setSubject(e.target.value)}
                 />
-                <label htmlFor="subject">Subject</label>
+                <label htmlFor="subject">SUBJECT</label>
               </div>
               {/* Message field */}
               <div className={`${styles.formGroup} ${styles.formFloating}`}>
@@ -57,12 +57,11 @@ function Contact() {
                   className={styles.formControl}
                   onChange={(e) => setMessage(e.target.value)}
                 ></textarea>
-                <label htmlFor="message">Message</label>
+                <label htmlFor="message">MESSAGE</label>
               </div>
               {/* Submit button */}
               <button type="submit" className={styles.submitBtn}>
-                Send Message
-                <i className="fa-solid fa-paper-plane"></i>
+                SEND MESSAGE
               </button>
             </form>
           </section>

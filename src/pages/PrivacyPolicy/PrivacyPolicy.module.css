@@ -10,12 +10,12 @@
 }
 
 .privacyPolicyTitle {
-  font-size: 3rem;
-  font-weight: 700;
+  line-height: 1;
+  font-size: 4.5rem;
   text-align: center;
   color: var(--primary);
   transition: 0.3s ease;
-  margin-bottom: 0.5rem;
+  font-family: "Bebas Neue", sans-serif;
 }
 
 .privacyPolicyTitle:hover {
@@ -38,11 +38,11 @@
 
 .policyHeading {
   font-weight: 500;
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   display: inline-block;
   transition: 0.3s ease;
   margin-bottom: 0.25rem;
-  padding-bottom: 0.15rem;
+  font-family: "Bebas Neue", sans-serif;
   border-bottom: 2px solid var(--primary);
 }
 
@@ -59,7 +59,7 @@
 /* Tablet responsiveness */
 @media (max-width: 768px) {
   .privacyPolicyTitle {
-    font-size: 2.75rem;
+    font-size: 4rem;
   }
 
   .privacyPolicyDescription {
@@ -67,7 +67,7 @@
   }
 
   .policyHeading {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
   }
 
   .policyText {
@@ -78,7 +78,7 @@
 /* Mobile responsiveness */
 @media (max-width: 480px) {
   .privacyPolicyTitle {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 
   .privacyPolicyDescription {
@@ -86,7 +86,7 @@
   }
 
   .policyHeading {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 
   .policyText {
