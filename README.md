@@ -18,13 +18,13 @@ The desktop-first design ensures great presentation on larger screens with full 
 
 The following image shows the web application's appearance and functionality:
 
-![Home Page](./src/assets/screenshots/home.jpg)
+![Home Page](./src/assets/screenshots/homePage.png)
 
-![Movies Page](./src/assets/screenshots/movies.jpg)
+![Movies Page](./src/assets/screenshots/moviesPage.png)
 
-![TV Shows Page](./src/assets/screenshots/tv-shows.jpg)
+![TV Shows Page](./src/assets/screenshots/tvShowsPage.png)
 
-![Top IMDB Page](./src/assets/screenshots/top-imdb.jpg)
+![Top IMDB Page](./src/assets/screenshots/topIMDBPage.png)
 
 ## Key Features
 
