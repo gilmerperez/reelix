@@ -1,5 +1,4 @@
 .detailsContainer {
-  gap: 2rem;
   display: flex;
   padding: 2rem;
   align-items: center;
@@ -13,6 +12,7 @@
   font-weight: 500;
   font-size: 1.25rem;
   align-items: center;
+  margin-bottom: 1rem;
   transition: 0.3s ease;
   border-radius: 0.25rem;
   padding: 0.5rem 0.75rem;
@@ -27,23 +27,31 @@
 .rating {
   font-weight: 500;
   font-size: 1.25rem;
-  margin-top: 1.25rem;
+  margin-bottom: 1rem;
   color: var(--primary);
 }
 
 .description {
-  margin-top: 0.75rem;
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
 }
 
-.meta p {
-  margin-top: 0.5rem;
+.mediaData {
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mediaData p {
   color: var(--text-secondary);
 }
 
 /* Tablet responsiveness */
 @media (max-width: 768px) {
-  .trailerLink {
-    /* display: inline-block;
-    text-align: center; */
-  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
 }

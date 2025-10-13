@@ -33,23 +33,12 @@ function MediaDetails({ media }) {
         </p>
         {/* Description */}
         <p className={styles.description}>{overview}</p>
-        <div className={styles.meta}>
+        {/* Media data */}
+        <div className={styles.mediaData}>
           {/* Genres */}
           {genres?.length > 0 && (
             <p>
               <strong>Genres:</strong> {genres.join(", ")}
-            </p>
-          )}
-          {/* Country */}
-          {country && (
-            <p>
-              <strong>Country:</strong> {country}
-            </p>
-          )}
-          {/* Season Count */}
-          {number_of_seasons && (
-            <p>
-              <strong>Seasons:</strong> {number_of_seasons}
             </p>
           )}
           {/* Duration */}
@@ -57,6 +46,12 @@ function MediaDetails({ media }) {
             <p>
               <strong>Duration:</strong> {Math.floor(runtime / 60) > 0 ? `${Math.floor(runtime / 60)}h ` : ""}
               {runtime % 60}m
+            </p>
+          )}
+          {/* Country */}
+          {country && (
+            <p>
+              <strong>Country:</strong> {country}
             </p>
           )}
           {/* Directors */}
@@ -78,6 +73,12 @@ function MediaDetails({ media }) {
               <strong>First Air Date:</strong> {first_air_date}
             </p>
           ) : null}
+          {/* Season count */}
+          {number_of_seasons && (
+            <p>
+              <strong>Seasons:</strong> {number_of_seasons}
+            </p>
+          )}
         </div>
       </div>
     </>
