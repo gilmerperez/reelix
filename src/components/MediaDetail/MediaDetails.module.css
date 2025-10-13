@@ -7,13 +7,6 @@
   justify-content: center;
 }
 
-.poster {
-  /* width: 200px; */
-  object-fit: cover;
-  transition: 0.3s ease;
-  border-radius: 0.25rem;
-}
-
 .info {
   flex: 1;
 }
@@ -60,10 +53,6 @@
 
 /* Tablet responsiveness */
 @media (max-width: 768px) {
-  .poster {
-    margin-bottom: 1rem;
-  }
-
   .info {
     /* width: 100%; */
   }

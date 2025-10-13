@@ -1,27 +1,27 @@
 import MediaBanner from "./MediaBanner";
 import Loading from "../Loading/Loading";
 import MediaDetails from "./MediaDetails";
-import styles from "./MediaDetail.module.css";
 import { useParams } from "react-router-dom";
+import styles from "./MediaDetail.module.css";
 import { fetchMediaDetails } from "../../utils/api";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 function MediaDetail({ mediaType }) {
-  // State Hooks
+  // * State Hooks
+  const isMounted = useRef(true);
+  const [media, setMedia] = useState(null);
   const { id } = useParams();
   const [error, setError] = useState("");
-  const [media, setMedia] = useState(null);
   const [loading, setLoading] = useState(true);
-  const isMounted = useRef(true);
 
-  // Track mount status to avoid setting state on unmounted component
+  // * Track mount status to avoid setting state on unmounted component
   useEffect(() => {
     return () => {
       isMounted.current = false;
     };
   }, []);
 
-  // Update page title based on media
+  // * Update page title based on media
   useEffect(() => {
     if (media) {
       document.title = `Reelix | ${media.title || media.name}`;
@@ -30,6 +30,7 @@ function MediaDetail({ mediaType }) {
     }
   }, [media]);
 
+  // * Fetch media details
   useEffect(() => {
     async function getDetails() {
       setError("");
@@ -55,25 +56,27 @@ function MediaDetail({ mediaType }) {
   }, [mediaType, id]);
 
   return (
-    <main>
-      <div className={styles.main}>
-        {error && (
-          <div className={styles.error} role="alert">
-            {error}
-          </div>
-        )}
-        {loading ? (
-          <Loading />
-        ) : (
-          media && (
-            <>
-              <MediaBanner backdropPath={media.backdrop_path} title={media.title || media.name} />
-              <MediaDetails media={media} mediaType={mediaType} />
-            </>
-          )
-        )}
-      </div>
-    </main>
+    <>
+      <main>
+        <div className={styles.main}>
+          {error && (
+            <div className={styles.error} role="alert">
+              {error}
+            </div>
+          )}
+          {loading ? (
+            <Loading />
+          ) : (
+            media && (
+              <>
+                <MediaBanner backdropPath={media.backdrop_path} title={media.title || media.name} />
+                <MediaDetails media={media} mediaType={mediaType} />
+              </>
+            )
+          )}
+        </div>
+      </main>
+    </>
   );
 }
 

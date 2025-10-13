@@ -1,6 +1,7 @@
 import styles from "./MediaDetails.module.css";
 
 function MediaDetails({ media }) {
+  // * Destructure media object
   const {
     name,
     title,
@@ -11,7 +12,6 @@ function MediaDetails({ media }) {
     directors,
     producers,
     vote_count,
-    poster_path,
     release_date,
     vote_average,
     trailer_link,
@@ -22,12 +22,6 @@ function MediaDetails({ media }) {
   return (
     <>
       <div className={styles.detailsContainer}>
-        {/* Poster image */}
-        <img
-          className={styles.poster}
-          alt={`${title || name} Poster`}
-          src={`https://image.tmdb.org/t/p/w300${poster_path}`}
-        />
         <div className={styles.info}>
           {/* Title */}
           <h1 className={styles.title}>{title || name}</h1>
