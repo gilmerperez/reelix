@@ -58,23 +58,21 @@ function MediaDetail({ mediaType }) {
   return (
     <>
       <main>
-        <div className={styles.main}>
-          {error && (
-            <div className={styles.error} role="alert">
-              {error}
-            </div>
-          )}
-          {loading ? (
-            <Loading />
-          ) : (
-            media && (
-              <>
-                <MediaBanner backdropPath={media.backdrop_path} title={media.title || media.name} />
-                <MediaDetails media={media} mediaType={mediaType} />
-              </>
-            )
-          )}
-        </div>
+        {error && (
+          <div className={styles.error} role="alert">
+            {error}
+          </div>
+        )}
+        {loading ? (
+          <Loading />
+        ) : (
+          media && (
+            <>
+              <MediaBanner backdropPath={media.backdrop_path} title={media.title || media.name} />
+              <MediaDetails media={media} mediaType={mediaType} />
+            </>
+          )
+        )}
       </main>
     </>
   );

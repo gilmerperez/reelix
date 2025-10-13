@@ -1,13 +1,8 @@
-.main {
-  padding: 1rem;
-  min-height: 100vh;
-  background-color: hsl(0, 0%, 5%);
-}
-
 .error {
-  padding: 2rem;
-  font-weight: 600;
-  font-size: 1.2rem;
+  margin: 2rem;
+  font-size: 3rem;
+  user-select: none;
   text-align: center;
-  color: hsl(355, 95%, 45%);
+  color: var(--primary);
+  text-shadow: var(--shadow-large);
 }
