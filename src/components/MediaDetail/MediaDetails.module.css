@@ -1,22 +1,17 @@
-.details {
+.detailsContainer {
   gap: 2rem;
   display: flex;
   padding: 2rem;
-  color: white;
+  align-items: center;
   flex-direction: column;
-  background-color: hsl(0, 0%, 5%);
-}
-
-.topSection {
-  gap: 2rem;
-  display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .poster {
-  width: 200px;
+  /* width: 200px; */
   object-fit: cover;
-  border-radius: 10px;
+  transition: 0.3s ease;
+  border-radius: 0.25rem;
 }
 
 .info {
@@ -26,60 +21,51 @@
 .title {
   font-size: 2rem;
   font-weight: bold;
+  transition: 0.3s ease;
   margin-bottom: 1.25rem;
 }
 
 .trailerLink {
+  gap: 0.5rem;
+  display: flex;
+  font-weight: 500;
   font-size: 1.15rem;
-  font-weight: 600;
-  border-radius: 5px;
-  text-decoration: none;
-  color: hsl(0, 0%, 5%);
+  align-items: center;
+  transition: 0.3s ease;
+  border-radius: 0.25rem;
   padding: 0.5rem 0.75rem;
-  transition: 0.3s ease-in;
-  border: 1px solid hsl(0, 0%, 0%);
-  background-color: hsl(355, 95%, 45%);
+  justify-content: center;
+  background-color: var(--primary);
 }
 
 .trailerLink:hover {
-  color: white;
-  box-shadow: 0 0 20px hsl(355, 95%, 45%, 0.5);
-}
-
-.watchTrailerText {
-  margin-right: 0.5rem;
+  box-shadow: var(--shadow-large);
 }
 
 .rating {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.25rem;
   margin-top: 1.25rem;
-  color: hsl(355, 95%, 45%);
+  color: var(--primary);
 }
 
 .description {
-  line-height: 1.25;
   margin-top: 0.75rem;
 }
 
 .meta p {
-  margin-top: 0.75rem;
-  color: hsl(0, 0%, 90%);
+  margin-top: 0.5rem;
+  color: var(--text-secondary);
 }
 
+/* Tablet responsiveness */
 @media (max-width: 768px) {
-  .topSection {
-    flex-direction: column;
-    align-items: center;
-  }
-
   .poster {
-    width: 150px;
     margin-bottom: 1rem;
   }
 
   .info {
-    width: 100%;
+    /* width: 100%; */
   }
 
   .title {
@@ -88,7 +74,7 @@
   }
 
   .trailerLink {
-    display: inline-block;
-    text-align: center;
+    /* display: inline-block;
+    text-align: center; */
   }
 }

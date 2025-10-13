@@ -1,6 +1,6 @@
 .loadingText {
+  margin: 2rem;
   font-size: 3rem;
-  margin-top: 2rem;
   user-select: none;
   text-align: center;
   color: var(--primary);

@@ -7,8 +7,8 @@ function MediaBanner({ backdropPath, title }) {
   return (
     <>
       <div className={styles.bannerContainer} style={{ backgroundImage: `url(${backdropURL})` }}>
-        <div className={styles.overlay}>
-          <h1 className={styles.title}>{title}</h1>
+        <div className={styles.bannerOverlay}>
+          <h1 className={styles.bannerTitle}>{title}</h1>
         </div>
       </div>
     </>
