@@ -7,10 +7,6 @@
   justify-content: center;
 }
 
-.info {
-  flex: 1;
-}
-
 .trailerLink {
   gap: 0.5rem;
   display: flex;
@@ -46,10 +42,6 @@
 
 /* Tablet responsiveness */
 @media (max-width: 768px) {
-  .info {
-    /* width: 100%; */
-  }
-
   .trailerLink {
     /* display: inline-block;
     text-align: center; */
