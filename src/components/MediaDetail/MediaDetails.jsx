@@ -57,13 +57,13 @@ function MediaDetails({ media }) {
           {/* Directors */}
           {directors?.length > 0 && (
             <p>
-              <strong>Directors:</strong> {directors.join(", ")}
+              <strong>Director(s):</strong> {directors.join(", ")}
             </p>
           )}
           {/* Producers */}
           {producers?.length > 0 && (
             <p>
-              <strong>Producers:</strong> {producers.join(", ")}
+              <strong>Producer(s):</strong> {producers.join(", ")}
             </p>
           )}
           {/* Release date */}
