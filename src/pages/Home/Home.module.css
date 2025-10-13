@@ -16,10 +16,10 @@
 
 /* Title */
 .homeTitle {
-  font-size: 3rem;
+  font-size: 3.5rem;
   color: var(--primary);
   transition: 0.3s ease;
-  margin-bottom: 0.5rem;
+  font-family: "Bebas Neue", sans-serif;
 }
 
 .homeTitle:hover {
@@ -198,7 +198,7 @@
   }
 
   .homeTitle {
-    font-size: 2.75rem;
+    font-size: 3rem;
   }
 
   .searchBar input {
@@ -238,7 +238,7 @@
   }
 
   .homeTitle {
-    font-size: 2.5rem;
+    font-size: 2.75rem;
   }
 
   .searchBar input {
