@@ -3,8 +3,6 @@ import styles from "./MediaDetails.module.css";
 function MediaDetails({ media }) {
   // * Destructure media object
   const {
-    name,
-    title,
     genres,
     runtime,
     country,
@@ -23,8 +21,6 @@ function MediaDetails({ media }) {
     <>
       <div className={styles.detailsContainer}>
         <div className={styles.info}>
-          {/* Title */}
-          <h1 className={styles.title}>{title || name}</h1>
           {/* Trailer */}
           {trailer_link && (
             <a href={trailer_link} className={styles.trailerLink} target="_blank" rel="noopener noreferrer">

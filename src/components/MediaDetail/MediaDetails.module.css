@@ -11,13 +11,6 @@
   flex: 1;
 }
 
-.title {
-  font-size: 2rem;
-  font-weight: bold;
-  transition: 0.3s ease;
-  margin-bottom: 1.25rem;
-}
-
 .trailerLink {
   gap: 0.5rem;
   display: flex;
@@ -55,11 +48,6 @@
 @media (max-width: 768px) {
   .info {
     /* width: 100%; */
-  }
-
-  .title {
-    font-size: 1.75rem;
-    text-align: center;
   }
 
   .trailerLink {
