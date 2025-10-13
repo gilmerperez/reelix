@@ -51,16 +51,16 @@ function Header() {
             {/* Site navigation */}
             <nav className={styles.navContainer}>
               <NavLink to="/" className={navLinkClass} end>
-                Home
+                HOME
               </NavLink>
               <NavLink to="/movies" className={navLinkClass}>
-                Movies
+                MOVIES
               </NavLink>
               <NavLink to="/tv-shows" className={navLinkClass}>
-                TV Shows
+                TV SHOWS
               </NavLink>
               <NavLink to="/top-imdb" className={navLinkClass}>
-                Top IMDB
+                TOP IMDB
               </NavLink>
             </nav>
           </div>
