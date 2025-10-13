@@ -103,18 +103,23 @@ async function fetchGenreMap(type = "movie") {
 
 // * Movies fetch and enrich
 export async function fetchMovies({ page = 1, year = "", genre = "", country = "" } = {}) {
+  // Build URL
   let url = `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&page=${page}&sort_by=popularity.desc`;
-
+  // Add year filter
   if (year) url += `&primary_release_year=${year}`;
+  // Add genre filter
   if (genre) url += `&with_genres=${genre}`;
+  // Add country filter
   if (country) url += `&region=${country}`;
 
+  // Try to fetch data
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error("Failed to fetch movies");
     const json = await response.json();
     const genreMap = await fetchGenreMap("movie");
 
+    // Enrich data with additional details
     return await Promise.all(
       json.results.map(async (movie) => {
         const { runtime, certification } = await fetchMovieDetails(movie.id);
@@ -134,18 +139,22 @@ export async function fetchMovies({ page = 1, year = "", genre = "", country = "
 
 // * Movie search
 export async function searchMovies(query) {
+  // If query is empty, return empty array
   if (!query) return [];
 
+  // Try to fetch data
   try {
     const res = await fetch(
       `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(
         query
       )}&include_adult=false`
     );
+    // If failed, throw error
     if (!res.ok) throw new Error("Movie search failed");
     const json = await res.json();
     const genreMap = await fetchGenreMap("movie");
 
+    // Enrich data with additional details
     return await Promise.all(
       json.results.map(async (movie) => {
         const { runtime, certification } = await fetchMovieDetails(movie.id);
@@ -165,15 +174,18 @@ export async function searchMovies(query) {
 
 // * Movie details
 async function fetchMovieDetails(id) {
+  // Try to fetch data
   try {
     const [detailsRes, ratingsRes] = await Promise.all([
       fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US`),
       fetch(`${BASE_URL}/movie/${id}/release_dates?api_key=${API_KEY}`),
     ]);
 
+    // Get details and ratings
     const details = await detailsRes.json();
     const ratings = await ratingsRes.json();
 
+    // Get US release and certification
     const usRelease = ratings.results.find((r) => r.iso_3166_1 === "US");
     const certification = usRelease?.release_dates?.[0]?.certification || "NR";
 
@@ -184,18 +196,21 @@ async function fetchMovieDetails(id) {
   }
 }
 
+// * Movie genres
 export async function fetchMovieGenres() {
   return await fetchGenreMap("movie");
 }
 
 // * TV Show fetch and enrich
 export async function fetchTVShows(page = 1) {
+  // Try to fetch data
   try {
     const res = await fetch(`${BASE_URL}/tv/popular?api_key=${API_KEY}&language=en-US&page=${page}`);
     if (!res.ok) throw new Error("Failed to fetch TV shows");
     const json = await res.json();
     const genreMap = await fetchGenreMap("tv");
 
+    // Enrich data with additional details
     return await Promise.all(
       json.results.map(async (show) => {
         const details = await fetchTVDetails(show.id);
@@ -214,15 +229,20 @@ export async function fetchTVShows(page = 1) {
 
 // * TV Show search
 export async function searchTVShows(query) {
+  // If query is empty, return empty array
   if (!query) return [];
 
+  // Try to fetch data
   try {
     const res = await fetch(
       `${BASE_URL}/search/tv?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(query)}&include_adult=false`
     );
+    // If failed, throw error
+    if (!res.ok) throw new Error("Failed to fetch TV shows");
     const json = await res.json();
     const genreMap = await fetchGenreMap("tv");
 
+    // Enrich data with additional details
     return await Promise.all(
       json.results.map(async (tvShow) => {
         const { episode_run_time } = await fetchTVShowDetails(tvShow.id);
@@ -241,9 +261,12 @@ export async function searchTVShows(query) {
 
 // * TV Show details
 async function fetchTVDetails(id) {
+  // Try to fetch data
   const res = await fetch(`${BASE_URL}/tv/${id}?api_key=${API_KEY}&language=en-US`);
+  // If failed, throw error
+  if (!res.ok) throw new Error("Failed to fetch TV details");
   const data = await res.json();
-
+  // Return number of seasons and first air date
   return {
     number_of_seasons: data.number_of_seasons,
     first_air_date: data.first_air_date,
@@ -252,6 +275,7 @@ async function fetchTVDetails(id) {
 
 // * TV Show details
 async function fetchTVShowDetails(id) {
+  // Try to fetch data
   const res = await fetch(`${BASE_URL}/tv/${id}?api_key=${API_KEY}&language=en-US`);
   const data = await res.json();
 
@@ -260,19 +284,25 @@ async function fetchTVShowDetails(id) {
   };
 }
 
+// * TV Show genres
 export async function fetchTVGenres() {
   return await fetchGenreMap("tv");
 }
 
 // * Top IMDB fetch and enrich
 export async function fetchTopRatedMovies(page = 1, signal) {
+  // Build URL
   const url = `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`;
 
+  // Try to fetch data
   try {
     const res = await fetch(url, { signal });
+    // If failed, throw error
     if (!res.ok) throw new Error("Failed to fetch top rated movies");
+    // Get data
     const data = await res.json();
 
+    // Enrich data with additional details
     const enrichedResults = await Promise.all(
       data.results.map(async (movie) => {
         try {
@@ -298,11 +328,12 @@ export async function fetchTopRatedMovies(page = 1, signal) {
         }
       })
     );
-
+    // Return results and total results
     return {
       results: enrichedResults,
       totalResults: data.total_results,
     };
+    // If failed, return empty results and total results
   } catch (err) {
     console.error("fetchTopRatedMovies error:", err);
     return { results: [], totalResults: 0 };
@@ -311,6 +342,7 @@ export async function fetchTopRatedMovies(page = 1, signal) {
 
 // * In-Depth media details for Movies and TV Shows
 export async function fetchMediaDetails(type = "movie", id) {
+  // Try to fetch data
   try {
     const [detailRes, creditsRes, videosRes] = await Promise.all([
       fetch(`${BASE_URL}/${type}/${id}?api_key=${API_KEY}&language=en-US`),
@@ -318,15 +350,18 @@ export async function fetchMediaDetails(type = "movie", id) {
       fetch(`${BASE_URL}/${type}/${id}/videos?api_key=${API_KEY}&language=en-US`),
     ]);
 
+    // Get details, credits, and videos
     const details = await detailRes.json();
     const credits = await creditsRes.json();
     const videos = await videosRes.json();
 
+    // Get trailer, cast, directors, and producers
     const trailer = videos.results.find((vid) => vid.type === "Trailer" && vid.site === "YouTube");
     const cast = credits.cast.slice(0, 6).map((member) => member.name);
     const directors = credits.crew.filter((m) => m.job === "Director").map((p) => p.name);
     const producers = credits.crew.filter((m) => m.job === "Producer").map((p) => p.name);
 
+    // Return details
     return {
       id: details.id,
       title: details.title || details.name,
@@ -346,6 +381,7 @@ export async function fetchMediaDetails(type = "movie", id) {
       directors,
       producers,
     };
+    // If failed, return null
   } catch (err) {
     console.error(`fetchMediaDetails failed for ID ${id}`, err);
     return null;
