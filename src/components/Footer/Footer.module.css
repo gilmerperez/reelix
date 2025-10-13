@@ -22,7 +22,7 @@ footer {
 
 /* Legal disclaimer */
 .legalDisclaimer {
-  max-width: 800px;
+  max-width: 900px;
   font-size: 1.15rem;
   text-align: center;
   transition: 0.3s ease;
@@ -32,6 +32,7 @@ footer {
 
 /* Copyright */
 .copyright {
+  font-weight: 500;
   font-size: 1.15rem;
   transition: 0.3s ease;
 }
@@ -40,7 +41,7 @@ footer {
 .seperator {
   width: 100%;
   height: 2px;
-  margin: 0.5rem 0rem;
+  margin: 0.75rem 0rem;
   background-color: var(--primary);
 }
 
@@ -63,10 +64,12 @@ footer {
 }
 
 .navHeader {
+  line-height: 1;
   font-weight: 500;
-  font-size: 1.25rem;
+  font-size: 1.625rem;
   transition: 0.3s ease;
   margin-bottom: 0.15rem;
+  font-family: "Bebas Neue", sans-serif;
 }
 
 .navItems {
@@ -102,12 +105,12 @@ footer {
   }
 
   .bottomContainer {
-    gap: 0.5rem;
+    gap: 1rem;
     flex-direction: column;
   }
 
   .navHeader {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
   }
 
   .navItems a {
@@ -130,7 +133,7 @@ footer {
   }
 
   .navHeader {
-    font-size: 1rem;
+    font-size: 1.375rem;
   }
 
   .navItems a {

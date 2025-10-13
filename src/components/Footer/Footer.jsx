@@ -23,7 +23,7 @@ function Footer() {
           <div className={styles.bottomContainer}>
             {/* Site navigation */}
             <section className={styles.siteNavigation}>
-              <h6 className={styles.navHeader}>Pages</h6>
+              <h6 className={styles.navHeader}>PAGES</h6>
               <nav className={styles.navItems}>
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/contact">Movies</NavLink>
@@ -33,7 +33,7 @@ function Footer() {
             </section>
             {/* Social links */}
             <section className={styles.socialLinks}>
-              <h6 className={styles.navHeader}>Connect</h6>
+              <h6 className={styles.navHeader}>CONNECT</h6>
               <nav className={styles.navItems}>
                 {/* Facebook */}
                 <Link
@@ -66,7 +66,7 @@ function Footer() {
             </section>
             {/* Legal pages */}
             <section className={styles.legalPages}>
-              <h6 className={styles.navHeader}>Legal</h6>
+              <h6 className={styles.navHeader}>LEGAL</h6>
               <nav className={styles.navItems}>
                 <NavLink to="/contact">Contact</NavLink>
                 <NavLink to="/privacy-policy">Privacy Policy</NavLink>
@@ -75,7 +75,7 @@ function Footer() {
             </section>
             {/* Contact info */}
             <section className={styles.contactInfo}>
-              <h6 className={styles.navHeader}>Contact</h6>
+              <h6 className={styles.navHeader}>CONTACT</h6>
               <nav className={styles.navItems}>
                 {/* Phone number */}
                 <Link className={styles.contactLink} to="tel:+14073501805">
