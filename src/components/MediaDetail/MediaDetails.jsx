@@ -10,9 +10,9 @@ function MediaDetails({ media }) {
     directors,
     producers,
     vote_count,
-    release_date,
     vote_average,
     trailer_link,
+    release_date,
     first_air_date,
     number_of_seasons,
   } = media;

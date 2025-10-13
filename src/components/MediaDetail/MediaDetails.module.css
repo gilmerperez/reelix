@@ -1,9 +1,8 @@
 .detailsContainer {
   display: flex;
-  padding: 2rem;
-  align-items: center;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .trailerLink {
@@ -16,7 +15,7 @@
   transition: 0.3s ease;
   border-radius: 0.25rem;
   padding: 0.5rem 0.75rem;
-  justify-content: flex-start;
+  justify-content: center;
   background-color: var(--primary);
 }
 
