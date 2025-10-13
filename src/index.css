@@ -24,21 +24,6 @@ a {
   text-decoration: none;
 }
 
-/* Highlighted text */
-::selection {
-  color: var(--text-primary);
-  background: var(--primary);
-}
-
-/* Scrollbar */
-body::-webkit-scrollbar {
-  width: 8px;
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: var(--primary);
-}
-
 /* Buttons */
 button {
   color: inherit;
