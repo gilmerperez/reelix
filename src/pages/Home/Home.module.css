@@ -16,7 +16,7 @@
 
 /* Title */
 .homeTitle {
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   color: var(--primary);
   transition: 0.3s ease;
   font-family: "Bebas Neue", sans-serif;
@@ -198,7 +198,7 @@
   }
 
   .homeTitle {
-    font-size: 3rem;
+    font-size: 4rem;
   }
 
   .searchBar input {
@@ -238,7 +238,7 @@
   }
 
   .homeTitle {
-    font-size: 2.75rem;
+    font-size: 3rem;
   }
 
   .searchBar input {

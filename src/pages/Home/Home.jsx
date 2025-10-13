@@ -8,7 +8,7 @@ import { searchMovies, searchTVShows } from "../../utils/api";
 function Home() {
   // * Set page title
   useEffect(() => {
-    document.title = "Reelix | Home";
+    document.title = "Reelix | Explore The Latest Movies & TV Shows";
   }, []);
 
   // * State hooks
