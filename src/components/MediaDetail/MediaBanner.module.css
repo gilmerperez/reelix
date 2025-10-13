@@ -1,6 +1,8 @@
 .bannerContainer {
   width: 100vw;
   height: 75vh;
+  margin-top: -2rem;
+  margin-left: -2rem;
   position: relative;
   background-size: cover;
   background-position: center;
