@@ -9,14 +9,13 @@
 .trailerLink {
   gap: 0.75rem;
   display: flex;
-  line-height: 1;
-  margin: 1rem 0rem;
   font-size: 1.75rem;
   align-items: center;
   transition: 0.3s ease;
   border-radius: 0.25rem;
-  padding: 0.5rem 0.75rem;
+  padding: 0.75rem;
   justify-content: center;
+  margin: 2rem 0rem 1rem 0rem;
   background-color: var(--primary);
   font-family: "Bebas Neue", sans-serif;
 }
@@ -28,12 +27,11 @@
 
 /* Rating */
 .rating {
-  line-height: 1;
   font-size: 1.75rem;
   margin-bottom: 1rem;
   transition: 0.3s ease;
   border-radius: 0.25rem;
-  padding: 0.5rem 0.75rem;
+  padding: 0.75rem;
   border: 2px solid var(--primary);
   font-family: "Bebas Neue", sans-serif;
 }
