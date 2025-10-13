@@ -1,6 +1,6 @@
 .bannerContainer {
   width: 100vw;
-  height: 50vh;
+  height: 65vh;
   margin-top: -2rem;
   margin-left: -2rem;
   position: relative;
@@ -29,6 +29,7 @@
 /* Tablet responsiveness */
 @media (max-width: 768px) {
   .bannerContainer {
+    height: 50vh;
     margin-top: -1.75rem;
     margin-left: -1.75rem;
   }
