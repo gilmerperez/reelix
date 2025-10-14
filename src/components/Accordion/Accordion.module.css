@@ -24,6 +24,7 @@
 .accordionHeader {
   width: 100%;
   display: flex;
+  text-align: left;
   font-weight: 500;
   font-size: 1.25rem;
   align-items: center;

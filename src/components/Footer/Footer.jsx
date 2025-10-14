@@ -26,7 +26,7 @@ function Footer() {
               <h6 className={styles.navHeader}>PAGES</h6>
               <nav className={styles.navItems}>
                 <NavLink to="/">Home</NavLink>
-                <NavLink to="/contact">Movies</NavLink>
+                <NavLink to="/movies">Movies</NavLink>
                 <NavLink to="/tv-shows">TV Shows</NavLink>
                 <NavLink to="/top-imdb">Top IMDB</NavLink>
               </nav>
