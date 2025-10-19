@@ -130,7 +130,7 @@ header {
 /* Mobile responsiveness */
 @media (max-width: 480px) {
   header {
-    padding: 0.75rem 1rem;
+    padding: 0.85rem 1.5rem;
   }
 
   .logo {
@@ -190,13 +190,12 @@ header {
   }
 }
 
+/* Hide desktop layout and show mobile layout */
 @media (max-width: 400px) {
-  /* Hide desktop header */
   .desktopHeader {
     display: none;
   }
 
-  /* Show mobile header */
   .mobileHeader {
     display: flex;
   }
