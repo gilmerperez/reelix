@@ -1,7 +1,7 @@
 import "../styles/globals.css";
-import { Bebas_Neue, Montserrat } from "next/font/google";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import { Bebas_Neue, Montserrat } from "next/font/google";
 
 const bebasNeue = Bebas_Neue({
   variable: "--font-bebas-neue",

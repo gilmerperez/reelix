@@ -1,13 +1,12 @@
 "use client";
-
-import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
+import logo from "/favicon.png";
 import { useState } from "react";
+import styles from "./page.module.css";
+import { useRouter } from "next/navigation";
 import Accordion from "../components/Accordion/Accordion";
 import { searchMovies, searchTVShows } from "../utils/api";
-import styles from "./page.module.css";
-import logo from "/favicon.png";
 
 export default function Home() {
   const router = useRouter();
@@ -162,8 +161,8 @@ export default function Home() {
             <p className={styles.homeDescription}>
               Discover movies and TV shows with Reelix — your go-to platform for exploring the latest releases,
               trailers, ratings, and detailed metadata. Designed as a modern, fully responsive media discovery app,
-              Reelix helps film fans stay updated on what&apos;s new, what&apos;s trending, and what&apos;s worth watching — all in one
-              clean, ad-free interface.
+              Reelix helps film fans stay updated on what&apos;s new, what&apos;s trending, and what&apos;s worth
+              watching — all in one clean, ad-free interface.
             </p>
             <p className={styles.subheading}>Is Reelix Safe?</p>
             <p className={styles.text}>
@@ -184,8 +183,8 @@ export default function Home() {
             <p className={styles.subheading}>Looking For Streaming Options?</p>
             <p className={styles.text}>
               This site does not offer direct streaming. However, trailers and official content may be embedded from
-              platforms like YouTube. If you&apos;re interested in watching a film or show, we recommend checking licensed
-              providers like Netflix, Hulu, Prime Video, or Disney+.
+              platforms like YouTube. If you&apos;re interested in watching a film or show, we recommend checking
+              licensed providers like Netflix, Hulu, Prime Video, or Disney+.
             </p>
           </section>
 

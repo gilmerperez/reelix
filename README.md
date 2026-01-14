@@ -1,8 +1,8 @@
-# Reelix 2
+# Reelix
 
 ## Description
 
-Reelix 2 is a modern, Next.js-powered web application for discovering movies and TV shows using live data from The Movie Database (TMDB) API. It offers a cinematic, intuitive experience for exploring new releases, top-rated titles, and detailed metadata including trailers, cast, directors, genres, and countries.
+Reelix is a modern, Next.js-powered web application for discovering movies and TV shows using live data from The Movie Database (TMDB) API. It offers a cinematic, intuitive experience for exploring new releases, top-rated titles, and detailed metadata including trailers, cast, directors, genres, and countries.
 
 - **Problem:** Many movie and TV show discovery platforms suffer from cluttered interfaces, limited filtering options, and poor performance. Users struggle to find content that matches their preferences efficiently.
 
@@ -20,19 +20,19 @@ Reelix 2 is a modern, Next.js-powered web application for discovering movies and
 
 ## Features
 
+- **Top IMDB Ratings:** Dedicated page showcasing the highest-rated movies from TMDB, with detailed metadata and certification information.
+
+- **Performance Optimized:** Leverages Next.js Image component for optimized image loading, font optimization, and efficient code splitting.
+
+- **SEO Optimized:** Built with Next.js for optimal search engine optimization, including proper metadata, semantic HTML, and server-side rendering.
+
+- **Responsive Design:** Fully responsive layout optimized for desktops, tablets, smartphones, and smart TVs, ensuring a consistent experience across all devices.
+
 - **Advanced Filtering System:** Users can filter movies and TV shows by genre, year, and country with real-time URL parameter updates for shareable filtered views.
 
 - **Comprehensive Search:** Powerful search functionality that queries both movies and TV shows simultaneously, intelligently selecting the best match based on vote counts.
 
-- **Top IMDB Ratings:** Dedicated page showcasing the highest-rated movies from TMDB, with detailed metadata and certification information.
-
 - **Detailed Media Pages:** Each movie or TV show features a comprehensive detail page with poster, backdrop banner, trailer links, cast, crew, genres, ratings, and runtime information.
-
-- **Responsive Design:** Fully responsive layout optimized for desktops, tablets, smartphones, and smart TVs, ensuring a consistent experience across all devices.
-
-- **SEO Optimized:** Built with Next.js for optimal search engine optimization, including proper metadata, semantic HTML, and server-side rendering.
-
-- **Performance Optimized:** Leverages Next.js Image component for optimized image loading, font optimization, and efficient code splitting.
 
 ## Mock Up
 
@@ -50,8 +50,8 @@ The following images demonstrate the web application&apos;s appearance and funct
 
 **Frontend:**
 
-- **Styling:** CSS Modules for scoped, maintainable component styling
 - **Frameworks/Libraries:** Next.js 16 (App Router), React 19
+- **Styling:** CSS Modules for scoped, maintainable component styling
 - **Font Optimization:** Next.js Font Optimization (Bebas Neue, Montserrat)
 
 **Backend:**
@@ -63,5 +63,5 @@ The following images demonstrate the web application&apos;s appearance and funct
 
 - **API Integration:** The Movie Database (TMDB) API for real-time media data
 - **Image Optimization:** Next.js Image component for optimized image loading
-- **Environment Variables:** Next.js environment variable management (NEXT_PUBLIC_*)
+- **Environment Variables:** Next.js environment variable management (NEXT*PUBLIC*\*)
 - **Deployment:** Optimized for Vercel, Netlify, or similar Next.js-compatible platforms
