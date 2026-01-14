@@ -35,12 +35,12 @@ function Filter({ type = "movie", initialFilters, onFilterChange }) {
     <>
       <div className={styles.filterContainer}>
         {/* Year filter */}
-        <select name="year" value={filters.year} onChange={handleChange}>
-          <option value="">All Years</option>
+        <select name="year" value={filters.year} onChange={handleChange} className={styles.select}>
+          <option value="" className={styles.option}>All Years</option>
           {Array.from({ length: 30 }, (_, i) => {
             const y = new Date().getFullYear() - i;
             return (
-              <option key={y} value={y.toString()}>
+              <option key={y} value={y.toString()} className={styles.option}>
                 {y}
               </option>
             );
@@ -48,23 +48,23 @@ function Filter({ type = "movie", initialFilters, onFilterChange }) {
         </select>
 
         {/* Genre filter */}
-        <select name="genre" value={filters.genre} onChange={handleChange}>
-          <option value="">All Genres</option>
+        <select name="genre" value={filters.genre} onChange={handleChange} className={styles.select}>
+          <option value="" className={styles.option}>All Genres</option>
           {genres.map(({ id, name }) => (
-            <option key={id} value={id}>
+            <option key={id} value={id} className={styles.option}>
               {name}
             </option>
           ))}
         </select>
 
         {/* Country filter */}
-        <select name="country" value={filters.country} onChange={handleChange}>
-          <option value="">All Countries</option>
-          <option value="GB">United Kingdom</option>
-          <option value="US">United States</option>
-          <option value="FR">France</option>
-          <option value="JP">Japan</option>
-          <option value="IN">India</option>
+        <select name="country" value={filters.country} onChange={handleChange} className={styles.select}>
+          <option value="" className={styles.option}>All Countries</option>
+          <option value="GB" className={styles.option}>United Kingdom</option>
+          <option value="US" className={styles.option}>United States</option>
+          <option value="FR" className={styles.option}>France</option>
+          <option value="JP" className={styles.option}>Japan</option>
+          <option value="IN" className={styles.option}>India</option>
         </select>
       </div>
     </>

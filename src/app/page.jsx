@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "/favicon.png";
 import { useState } from "react";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
@@ -51,7 +50,7 @@ export default function Home() {
       <main>
         <div className={styles.homeContainer}>
           {/* Logo */}
-          <Image src={logo} alt="Reelix Logo" className={styles.reelixLogo} width={100} height={100} priority />
+          <Image src="/favicon.png" alt="Reelix Logo" className={styles.reelixLogo} width={100} height={100} priority />
 
           {/* Title */}
           <h1 className={styles.homeTitle}>Reelix</h1>

@@ -8,7 +8,7 @@
   justify-content: center;
 }
 
-select {
+.select {
   flex: 1;
   display: flex;
   cursor: pointer;
@@ -23,15 +23,15 @@ select {
   background-color: var(--header-bg-color);
 }
 
-select:hover {
+.select:hover {
   box-shadow: var(--shadow-small);
 }
 
-select:focus {
+.select:focus {
   box-shadow: var(--shadow-large);
 }
 
-option {
+.option {
   text-align: center;
   color: var(--text-primary);
   background-color: var(--header-bg-color);
@@ -39,7 +39,7 @@ option {
 
 /* Tablet responsiveness */
 @media (max-width: 768px) {
-  select {
+  .select {
     font-size: 1.5rem;
   }
 }
@@ -50,7 +50,7 @@ option {
     flex-direction: column;
   }
 
-  select {
+  .select {
     width: 100%;
     font-size: 1.375rem;
   }

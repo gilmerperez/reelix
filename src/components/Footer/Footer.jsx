@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Footer.module.css";
@@ -7,7 +9,7 @@ function Footer() {
   
   return (
     <>
-      <footer>
+      <footer className={styles.footer}>
         <div className={styles.footerContainer}>
           <div className={styles.topContainer}>
             {/* Legal disclaimer */}

@@ -1,4 +1,4 @@
-header {
+.header {
   top: 0;
   width: 100%;
   z-index: 999;
@@ -90,7 +90,7 @@ header {
 
 /* Tablet responsiveness */
 @media (max-width: 768px) {
-  header {
+  .header {
     padding: 1rem 1.75rem;
   }
 }
@@ -129,7 +129,7 @@ header {
 
 /* Mobile responsiveness */
 @media (max-width: 480px) {
-  header {
+  .header {
     padding: 0.85rem 1.5rem;
   }
 

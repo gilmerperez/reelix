@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import Script from "next/script";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import { Bebas_Neue, Montserrat } from "next/font/google";
@@ -47,6 +48,7 @@ export default function RootLayout({ children }) {
     <>
       <html lang="en">
         <body className={`${bebasNeue.variable} ${montserrat.variable}`}>
+          <Script src="https://kit.fontawesome.com/ffb8948ab7.js" crossOrigin="anonymous" strategy="afterInteractive" />
           <Header />
           {children}
           <Footer />

@@ -35,7 +35,7 @@ export default function Contact() {
 
           {/* Contact form */}
           <section className={styles.formContainer}>
-            <form onSubmit={handleSubmit}>
+            <form className={styles.form} onSubmit={handleSubmit}>
               {/* Subject field */}
               <div className={`${styles.formGroup} ${styles.formFloating}`}>
                 <input
@@ -47,7 +47,7 @@ export default function Contact() {
                   className={styles.formControl}
                   onChange={(e) => setSubject(e.target.value)}
                 />
-                <label htmlFor="subject">SUBJECT</label>
+                <label htmlFor="subject" className={styles.formLabel}>SUBJECT</label>
               </div>
               {/* Message field */}
               <div className={`${styles.formGroup} ${styles.formFloating}`}>
@@ -59,7 +59,7 @@ export default function Contact() {
                   className={styles.formControl}
                   onChange={(e) => setMessage(e.target.value)}
                 ></textarea>
-                <label htmlFor="message">MESSAGE</label>
+                <label htmlFor="message" className={styles.formLabel}>MESSAGE</label>
               </div>
               {/* Submit button */}
               <button type="submit" className={styles.submitBtn}>

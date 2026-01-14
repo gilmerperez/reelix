@@ -1,4 +1,4 @@
-footer {
+.footer {
   width: 100%;
   padding: 2rem;
   transition: 0.3s ease;
@@ -92,7 +92,7 @@ footer {
 
 /* Tablet responsiveness */
 @media (max-width: 768px) {
-  footer {
+  .footer {
     padding: 1.75rem;
   }
 
@@ -120,7 +120,7 @@ footer {
 
 /* Mobile responsiveness */
 @media (max-width: 480px) {
-  footer {
+  .footer {
     padding: 1.5rem;
   }
 

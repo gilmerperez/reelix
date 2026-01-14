@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { createPortal } from "react-dom";
 import { useState, useEffect } from "react";
 import styles from "./Header.module.css";
-import logo from "/favicon.png";
 
 function Header() {
   const pathname = usePathname();
@@ -45,13 +44,13 @@ function Header() {
 
   return (
     <>
-      <header className={`${isScrollingUp ? styles.visible : styles.hidden}`}>
+      <header className={`${styles.header} ${isScrollingUp ? styles.visible : styles.hidden}`}>
         <div className={styles.headerContainer}>
           {/* Desktop header */}
           <div className={styles.desktopHeader}>
             {/* Logo */}
             <Link href="/" className={styles.logoLink}>
-              <Image src={logo} alt="Reelix Logo" className={styles.logo} width={40} height={40} priority />
+              <Image src="/favicon.png" alt="Reelix Logo" className={styles.logo} width={40} height={40} priority />
               <span className={styles.logoTitle}>Reelix</span>
             </Link>
             {/* Site navigation */}
@@ -75,7 +74,7 @@ function Header() {
           <div className={styles.mobileHeader}>
             {/* Logo */}
             <Link href="/" className={styles.logoLink}>
-              <Image src={logo} alt="Reelix Logo" className={styles.logo} width={40} height={40} priority />
+              <Image src="/favicon.png" alt="Reelix Logo" className={styles.logo} width={40} height={40} priority />
               <span className={styles.logoTitle}>Reelix</span>
             </Link>
             {/* Hamburger button */}
