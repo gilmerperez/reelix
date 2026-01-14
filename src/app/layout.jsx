@@ -35,6 +35,11 @@ export const metadata = {
     "media",
   ],
   authors: [{ name: "Gilmer Perez" }],
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     title: "Reelix | Explore The Latest Movies & TV Shows",
     description:
