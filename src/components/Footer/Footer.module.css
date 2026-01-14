@@ -1,0 +1,142 @@
+footer {
+  width: 100%;
+  padding: 2rem;
+  transition: 0.3s ease;
+  background-color: var(--header-bg-color);
+  box-shadow: 0px 0px 15px hsla(0, 0%, 100%, 0.5);
+}
+
+.footerContainer {
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  max-width: 1200px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.topContainer {
+  text-align: center;
+}
+
+/* Legal disclaimer */
+.legalDisclaimer {
+  max-width: 900px;
+  font-size: 1.15rem;
+  text-align: center;
+  transition: 0.3s ease;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+/* Copyright */
+.copyright {
+  font-weight: 500;
+  font-size: 1.15rem;
+  transition: 0.3s ease;
+}
+
+/* Seperator */
+.seperator {
+  width: 100%;
+  height: 2px;
+  margin: 0.75rem 0rem;
+  background-color: var(--primary);
+}
+
+.bottomContainer {
+  gap: 1rem;
+  width: 100%;
+  display: flex;
+  transition: 0.3s ease;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.siteNavigation,
+.socialLinks,
+.legalPages,
+.contactInfo {
+  display: flex;
+  transition: 0.3s ease;
+  flex-direction: column;
+}
+
+.navHeader {
+  line-height: 1;
+  font-weight: 500;
+  font-size: 1.625rem;
+  transition: 0.3s ease;
+  margin-bottom: 0.15rem;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.navItems {
+  gap: 0.15rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.navItems a {
+  position: relative;
+  font-size: 1.15rem;
+  transition: 0.3s ease;
+  color: var(--text-secondary);
+}
+
+.navItems a:hover {
+  color: var(--text-primary);
+  transform: translateX(5px);
+}
+
+/* Tablet responsiveness */
+@media (max-width: 768px) {
+  footer {
+    padding: 1.75rem;
+  }
+
+  .legalDisclaimer {
+    font-size: 1rem;
+  }
+
+  .copyright {
+    font-size: 1rem;
+  }
+
+  .bottomContainer {
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  .navHeader {
+    font-size: 1.5rem;
+  }
+
+  .navItems a {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  footer {
+    padding: 1.5rem;
+  }
+
+  .legalDisclaimer {
+    font-size: 0.95rem;
+  }
+
+  .copyright {
+    font-size: 0.95rem;
+  }
+
+  .navHeader {
+    font-size: 1.375rem;
+  }
+
+  .navItems a {
+    font-size: 0.95rem;
+  }
+}

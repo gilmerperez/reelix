@@ -1,0 +1,58 @@
+.paginationContainer {
+  display: flex;
+  margin-top: 1.5rem;
+  transition: 0.3s ease;
+  justify-content: center;
+}
+
+.paginationItems {
+  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageItem {
+  border-radius: 0.25rem;
+}
+
+.pageLink {
+  font-weight: 500;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  transition: 0.3s ease;
+  border-radius: 0.25rem;
+  border: 2px solid var(--primary);
+  font-family: "Bebas Neue", sans-serif;
+  background-color: var(--header-bg-color);
+}
+
+.pageLink:hover:not(:disabled) {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-small);
+  background-color: var(--primary);
+}
+
+.active .pageLink {
+  background-color: var(--primary);
+}
+
+.disabled .pageLink {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Tablet responsiveness */
+@media (max-width: 768px) {
+  .pageLink {
+    font-size: 1.25rem;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .pageLink {
+    font-size: 1.15rem;
+  }
+}

@@ -1,0 +1,24 @@
+/* Error */
+.errorMessage {
+  margin: 2rem;
+  font-size: 3rem;
+  user-select: none;
+  text-align: center;
+  color: var(--primary);
+  transition: 0.3s ease;
+  text-shadow: var(--shadow-large);
+}
+
+/* Tablet responsiveness */
+@media (max-width: 768px) {
+  .errorMessage {
+    font-size: 2.75rem;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .errorMessage {
+    font-size: 2.5rem;
+  }
+}

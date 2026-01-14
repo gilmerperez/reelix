@@ -1,0 +1,23 @@
+.loadingText {
+  margin: 2rem;
+  font-size: 4.5rem;
+  user-select: none;
+  text-align: center;
+  color: var(--primary);
+  text-shadow: var(--shadow-large);
+  font-family: "Bebas Neue", sans-serif;
+}
+
+/* Tablet responsiveness */
+@media (max-width: 768px) {
+  .loadingText {
+    font-size: 4rem;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .loadingText {
+    font-size: 3rem;
+  }
+}

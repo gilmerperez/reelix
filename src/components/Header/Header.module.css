@@ -1,0 +1,306 @@
+header {
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  position: sticky;
+  padding: 1rem 2rem;
+  transition: 0.3s ease;
+  background-color: var(--header-bg-color);
+  box-shadow: 0px 0px 15px hsla(0, 0%, 100%, 0.5);
+}
+
+/* Show mobile header on scroll up */
+.visible {
+  transform: translateY(0%);
+}
+
+/* Hide mobile header on scroll down */
+.hidden {
+  transform: translateY(-150%);
+}
+
+.headerContainer {
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Desktop header */
+.desktopHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logoLink {
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 50px;
+  transition: 0.3s ease;
+}
+
+.logoTitle {
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: var(--primary);
+  transition: 0.3s ease;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.logoTitle:hover {
+  text-shadow: var(--shadow-large);
+}
+
+/* Site navigation */
+.navContainer {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  transition: 0.3s ease;
+  justify-content: center;
+}
+
+.navContainer a {
+  position: relative;
+  font-size: 1.75rem;
+  transition: 0.3s ease;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+/* Prevent hover effect on active link */
+.navContainer a:hover:not(.activeLink) {
+  transform: translateY(-3px);
+  color: var(--text-secondary);
+}
+
+/* Active link */
+.navContainer a.activeLink {
+  border-bottom: 2px solid var(--primary);
+}
+
+/* Tablet responsiveness */
+@media (max-width: 768px) {
+  header {
+    padding: 1rem 1.75rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo {
+    height: 45px;
+  }
+
+  .logoTitle {
+    font-size: 2rem;
+  }
+
+  .navContainer {
+    gap: 0.75rem;
+  }
+
+  .navContainer a {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .logo {
+    height: 40px;
+  }
+
+  .logoTitle {
+    font-size: 1.75rem;
+  }
+
+  .navContainer a {
+    font-size: 1.25rem;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  header {
+    padding: 0.85rem 1.5rem;
+  }
+
+  .logo {
+    height: 35px;
+  }
+
+  .logoTitle {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .navContainer a {
+    font-size: 1.15rem;
+  }
+
+  .navContainer a.activeLink {
+    border-bottom: 1px solid var(--primary);
+  }
+}
+
+/* Mobile header */
+.mobileHeader {
+  width: 100%;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Hamburger button */
+.hamburger {
+  display: none;
+  font-size: 1.25rem;
+  transition: 0.3s ease;
+}
+
+.hamburger:hover {
+  transform: scale(1.25);
+  color: var(--text-secondary);
+}
+
+.hamburger i {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hamburger i.spin {
+  animation: hamburgerSpin 0.3s ease-in-out;
+}
+
+/* Hamburger spin animation */
+@keyframes hamburgerSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hide desktop layout and show mobile layout */
+@media (max-width: 400px) {
+  .desktopHeader {
+    display: none;
+  }
+
+  .mobileHeader {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+/* Sidebar */
+.sidebarOverlay {
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  position: fixed;
+  background: hsla(0, 0%, 0%, 0.75);
+}
+
+.sidebar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 1.25rem;
+  max-width: 250px;
+  position: relative;
+  flex-direction: column;
+  background-color: var(--header-bg-color);
+}
+
+/* Sidebar close button */
+.sidebarClose {
+  top: 1.25rem;
+  left: 1.25rem;
+  position: absolute;
+  font-size: 1.25rem;
+  transition: 0.3s ease;
+}
+
+.sidebarClose:hover {
+  transform: scale(1.25);
+  color: var(--text-secondary);
+}
+
+/* Sidebar site navigation */
+.sidebarNavItems {
+  display: flex;
+  margin-top: 2.5rem;
+  flex-direction: column;
+}
+
+.sidebarNavItems a {
+  font-size: 1.5rem;
+  transition: 0.3s ease;
+  margin-left: -1.75rem;
+  padding: 0.75rem 1.75rem;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+/* Prevent hover effect on active link */
+.sidebarNavItems a:hover:not(.activeLink) {
+  transform: translateX(5px);
+  color: var(--text-secondary);
+}
+
+/* Active link */
+.sidebarNavItems a.activeLink {
+  position: relative;
+  margin-left: -1.75rem;
+  border-radius: 0.25rem;
+  padding: 0.75rem 1.75rem;
+  color: hsl(0, 0%, 100%);
+  box-shadow: var(--shadow-small);
+  background-color: var(--primary);
+}
+
+/* Sidebar footer */
+.sidebarFooter {
+  gap: 0.75rem;
+  display: flex;
+  box-shadow: none;
+  margin-top: auto;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--text-secondary);
+  font-family: "Bebas Neue", sans-serif;
+}
+
+/* Ensure all icons take up consistent width */
+.sidebarFooter i {
+  width: 1.5rem;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+/* Sidebar legal pages */
+.sidebarFooter a {
+  gap: 0.75rem;
+  display: flex;
+  font-size: 1.375rem;
+  align-items: center;
+  transition: 0.3s ease;
+  color: var(--text-secondary);
+}
+
+.sidebarFooter a:hover {
+  color: var(--text-primary);
+  transform: translateX(5px);
+}
