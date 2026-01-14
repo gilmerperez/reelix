@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect } from "react";
 import styles from "./page.module.css";
 
@@ -38,22 +37,22 @@ export default function TermsOfService() {
             {/* Changes to these terms */}
             <p className={styles.termsHeading}>Changes to these terms</p>
             <p className={styles.termsText}>
-              These terms may be updated periodically. Continued use of the site after changes are made implies acceptance
-              of the updated terms. Last updated: {new Date().getFullYear()}.
+              These terms may be updated periodically. Continued use of the site after changes are made implies
+              acceptance of the updated terms. Last updated: {new Date().getFullYear()}.
             </p>
             {/* Intellectual property */}
             <p className={styles.termsHeading}>Intellectual property</p>
             <p className={styles.termsText}>
               All movie and TV show metadata, trailers, and images are provided by The Movie Database (TMDB) via public
-              APIs and remain the property of their respective owners. This site does not host or stream any video content
-              directly.
+              APIs and remain the property of their respective owners. This site does not host or stream any video
+              content directly.
             </p>
             {/* Purpose of the site */}
             <p className={styles.termsHeading}>Purpose of the site</p>
             <p className={styles.termsText}>
               This site is a personal portfolio project intended for educational and demonstrative purposes only. It
-              allows users to browse public information about movies and TV shows, including trailers, descriptions, cast
-              details, and ratings, sourced from third-party APIs such as TMDB.
+              allows users to browse public information about movies and TV shows, including trailers, descriptions,
+              cast details, and ratings, sourced from third-party APIs such as TMDB.
             </p>
           </section>
         </div>

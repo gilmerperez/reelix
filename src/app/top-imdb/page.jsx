@@ -1,11 +1,11 @@
 "use client";
+import styles from "./page.module.css";
 
-import { useEffect, useState, useCallback } from "react";
 import Loading from "../../components/Loading/Loading";
+import { useEffect, useState, useCallback } from "react";
 import Pagination from "../../components/Pagination/Pagination";
 import TopIMDBCard from "../../components/Top IMDB Card/TopIMDBCard";
 import { fetchTopRatedMovies, searchMovies } from "../../utils/api";
-import styles from "./page.module.css";
 
 export default function TopIMDB() {
   // * Change page title

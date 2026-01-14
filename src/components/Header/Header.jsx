@@ -1,15 +1,14 @@
 "use client";
-
-import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Image from "next/image";
+import styles from "./Header.module.css";
 import { createPortal } from "react-dom";
 import { useState, useEffect } from "react";
-import styles from "./Header.module.css";
+import { usePathname } from "next/navigation";
 
 function Header() {
   const pathname = usePathname();
-  
+
   // * Sticky header logic
   const [isScrollingUp, setIsScrollingUp] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -96,31 +95,59 @@ function Header() {
               </button>
               {/* Sidebar site navigation */}
               <nav className={styles.sidebarNavItems}>
-                <Link href="/" className={isActive("/") ? styles.activeLink : undefined} onClick={() => setMenuOpen(false)}>
+                <Link
+                  href="/"
+                  onClick={() => setMenuOpen(false)}
+                  className={isActive("/") ? styles.activeLink : undefined}
+                >
                   Home
                 </Link>
-                <Link href="/movies" className={isActive("/movies") ? styles.activeLink : undefined} onClick={() => setMenuOpen(false)}>
+                <Link
+                  href="/movies"
+                  onClick={() => setMenuOpen(false)}
+                  className={isActive("/movies") ? styles.activeLink : undefined}
+                >
                   Movies
                 </Link>
-                <Link href="/tv-shows" className={isActive("/tv-shows") ? styles.activeLink : undefined} onClick={() => setMenuOpen(false)}>
+                <Link
+                  href="/tv-shows"
+                  onClick={() => setMenuOpen(false)}
+                  className={isActive("/tv-shows") ? styles.activeLink : undefined}
+                >
                   TV Shows
                 </Link>
-                <Link href="/top-imdb" className={isActive("/top-imdb") ? styles.activeLink : undefined} onClick={() => setMenuOpen(false)}>
+                <Link
+                  href="/top-imdb"
+                  onClick={() => setMenuOpen(false)}
+                  className={isActive("/top-imdb") ? styles.activeLink : undefined}
+                >
                   Top IMDB
                 </Link>
               </nav>
               {/* Sidebar footer */}
               <div className={styles.sidebarFooter}>
                 {/* Sidebar legal pages */}
-                <Link href="/contact" className={isActive("/contact") ? styles.activeLink : undefined} onClick={() => setMenuOpen(false)}>
+                <Link
+                  href="/contact"
+                  onClick={() => setMenuOpen(false)}
+                  className={isActive("/contact") ? styles.activeLink : undefined}
+                >
                   <i className="fa-solid fa-paper-plane"></i>
                   Contact
                 </Link>
-                <Link href="/privacy-policy" className={isActive("/privacy-policy") ? styles.activeLink : undefined} onClick={() => setMenuOpen(false)}>
+                <Link
+                  href="/privacy-policy"
+                  onClick={() => setMenuOpen(false)}
+                  className={isActive("/privacy-policy") ? styles.activeLink : undefined}
+                >
                   <i className="fa-solid fa-shield-halved"></i>
                   Privacy Policy
                 </Link>
-                <Link href="/terms-of-service" className={isActive("/terms-of-service") ? styles.activeLink : undefined} onClick={() => setMenuOpen(false)}>
+                <Link
+                  href="/terms-of-service"
+                  onClick={() => setMenuOpen(false)}
+                  className={isActive("/terms-of-service") ? styles.activeLink : undefined}
+                >
                   <i className="fa-solid fa-asterisk"></i>
                   Terms of Service
                 </Link>

@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./TVShowCard.module.css";
 
 function TVShowCard({ show }) {
@@ -12,12 +12,12 @@ function TVShowCard({ show }) {
         <div className={styles.tvCard}>
           {/* TV show poster */}
           <Image
-            alt={`${name} Poster`}
-            className={styles.tvPoster}
-            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
             width={500}
             height={750}
             unoptimized
+            alt={`${name} Poster`}
+            className={styles.tvPoster}
+            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
           />
           <div className={styles.tvCardContent}>
             {/* TV show title */}

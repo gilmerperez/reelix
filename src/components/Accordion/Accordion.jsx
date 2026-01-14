@@ -5,7 +5,7 @@ const accordionData = [
   {
     title: "Media Quality",
     content: `Where available, official trailers and media previews are embedded in HD from trusted sources like
-              YouTube. Poster art, backdrops, and images are delivered through TMDB&apos;s high-resolution image endpoints.`,
+              YouTube. Poster art, backdrops, and images are delivered through TMDB's high-resolution image endpoints.`,
   },
   {
     title: "Privacy & Safety",
@@ -25,7 +25,7 @@ const accordionData = [
   {
     title: "Device Compatibility",
     content: `Reelix is optimized for desktops, tablets, smartphones, and even smart TVs with modern browsers. Whether
-              you&apos;re at home or on the go, you&apos;ll enjoy a consistent and responsive experience.`,
+              you're at home or on the go, you'll enjoy a consistent and responsive experience.`,
   },
 
   {
@@ -36,7 +36,7 @@ const accordionData = [
   {
     title: "User-Friendly Browsing Experience",
     content: `Reelix offers an intuitive, distraction-free interface with powerful search, categorized filtering, and a clean layout. 
-            Whether you&apos;re looking for a blockbuster, hidden gem, or upcoming release, the platform ensures seamless access 
+            Whether you're looking for a blockbuster, hidden gem, or upcoming release, the platform ensures seamless access 
             to trailers, summaries, genres, cast info, and more — all without popups or intrusive ads.`,
   },
 ];

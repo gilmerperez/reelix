@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./TopIMDBCard.module.css";
 
 function TopIMDBCard({ movie }) {
@@ -16,12 +16,12 @@ function TopIMDBCard({ movie }) {
         <div className={styles.topIMDBCard}>
           {/* Top IMDB poster */}
           <Image
-            alt={`${title} Poster`}
-            className={styles.topIMDBPoster}
-            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
             width={500}
             height={750}
             unoptimized
+            alt={`${title} Poster`}
+            className={styles.topIMDBPoster}
+            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
           />
           <div className={styles.topIMDBCardContent}>
             {/* Top IMDB title */}

@@ -1,18 +1,17 @@
 "use client";
-
-import { useSearchParams, useRouter } from "next/navigation";
-import { useEffect, useState, useMemo, useCallback } from "react";
+import styles from "./page.module.css";
 import Filter from "../../components/Filter/Filter";
 import Loading from "../../components/Loading/Loading";
+import { useRouter, useSearchParams } from "next/navigation";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import Pagination from "../../components/Pagination/Pagination";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { fetchFilteredContent, searchMovies } from "../../utils/api";
-import styles from "./page.module.css";
 
 export default function Movies() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  
+
   // * State hooks
   const [page, setPage] = useState(1);
   const [error, setError] = useState("");

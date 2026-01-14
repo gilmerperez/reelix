@@ -1,12 +1,11 @@
 "use client";
-
+import styles from "./page.module.css";
 import { useParams } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
-import MediaBanner from "../../../components/MediaDetail/MediaBanner";
-import Loading from "../../../components/Loading/Loading";
-import MediaDetails from "../../../components/MediaDetail/MediaDetails";
 import { fetchMediaDetails } from "../../../utils/api";
-import styles from "./page.module.css";
+import Loading from "../../../components/Loading/Loading";
+import MediaBanner from "../../../components/MediaDetail/MediaBanner";
+import MediaDetails from "../../../components/MediaDetail/MediaDetails";
 
 export default function TVShowDetail() {
   // * State Hooks
