@@ -1,6 +1,11 @@
 const BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
+// * Validate API key
+if (!API_KEY) {
+  console.error("NEXT_PUBLIC_TMDB_API_KEY is not set. Please add it to your .env.local file.");
+}
+
 // * Cache genre maps to avoid repeated fetches
 const genreCache = {
   movie: null,
@@ -13,11 +18,17 @@ export async function fetchFilteredContent(
   { page = 1, year = "", genre = "", country = "" } = {},
   resultsPerPage = 52
 ) {
+  // Check if API key is set
+  if (!API_KEY) {
+    throw new Error("TMDB API key is not configured. Please set NEXT_PUBLIC_TMDB_API_KEY in your .env.local file.");
+  }
+
   const totalPagesNeeded = Math.ceil(resultsPerPage / 20);
   const genreMap = await fetchGenreMap(type);
 
   let results = [];
   let totalResults = 0;
+  let hasError = false;
 
   // * Fetch filtered content
   for (let i = 0; i < totalPagesNeeded; i++) {
@@ -34,14 +45,30 @@ export async function fetchFilteredContent(
     // Try to fetch data
     try {
       const response = await fetch(url);
-      if (!response.ok) throw new Error(`Failed to fetch ${type} page ${apiPage}`);
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(
+          errorData.status_message ||
+            `Failed to fetch ${type} page ${apiPage}: ${response.status} ${response.statusText}`
+        );
+      }
       const json = await response.json();
       // If first page, set total results
       if (i === 0) totalResults = json.total_results;
       results.push(...json.results);
     } catch (err) {
       console.error(`Error fetching page ${apiPage}:`, err);
+      hasError = true;
+      // If it's the first page and it fails, throw the error
+      if (i === 0) {
+        throw err;
+      }
     }
+  }
+
+  // If no results were fetched and there was an error, throw
+  if (results.length === 0 && hasError) {
+    throw new Error(`Failed to fetch ${type} content. Please check your API key and try again.`);
   }
 
   // * Enrich data with additional details
@@ -80,12 +107,23 @@ export async function fetchFilteredContent(
 
 // * Genre map fetcher with caching by type
 async function fetchGenreMap(type = "movie") {
+  // Check if API key is set
+  if (!API_KEY) {
+    console.error("TMDB API key is not configured. Genre map will be empty.");
+    return {};
+  }
+
   // If genre cache exists, return it
   if (genreCache[type]) return genreCache[type];
   // Try to fetch genre map
   try {
     const res = await fetch(`${BASE_URL}/genre/${type}/list?api_key=${API_KEY}&language=en-US`);
-    if (!res.ok) throw new Error(`Failed to fetch genre list for ${type}`);
+    if (!res.ok) {
+      const errorData = await res.json().catch(() => ({}));
+      throw new Error(
+        errorData.status_message || `Failed to fetch genre list for ${type}: ${res.status} ${res.statusText}`
+      );
+    }
     const data = await res.json();
     // Create map
     const map = {};
@@ -291,6 +329,11 @@ export async function fetchTVGenres() {
 
 // * Top IMDB fetch and enrich
 export async function fetchTopRatedMovies(page = 1, signal) {
+  // Check if API key is set
+  if (!API_KEY) {
+    throw new Error("TMDB API key is not configured. Please set NEXT_PUBLIC_TMDB_API_KEY in your .env.local file.");
+  }
+
   // Build URL
   const url = `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`;
 
@@ -298,7 +341,10 @@ export async function fetchTopRatedMovies(page = 1, signal) {
   try {
     const res = await fetch(url, { signal });
     // If failed, throw error
-    if (!res.ok) throw new Error("Failed to fetch top rated movies");
+    if (!res.ok) {
+      const errorData = await res.json().catch(() => ({}));
+      throw new Error(errorData.status_message || `Failed to fetch top rated movies: ${res.status} ${res.statusText}`);
+    }
     // Get data
     const data = await res.json();
 
