@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import Script from "next/script";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import { Analytics } from "@vercel/analytics/next";
 import { Bebas_Neue, Montserrat } from "next/font/google";
 
 const bebasNeue = Bebas_Neue({
@@ -57,6 +58,7 @@ export default function RootLayout({ children }) {
           <Header />
           {children}
           <Footer />
+          <Analytics />
         </body>
       </html>
     </>

@@ -10,7 +10,7 @@ Reelix is a modern, Next.js-powered web application for discovering movies and T
 
 - **Methodology:** The application follows a component-based architecture with Next.js App Router. It leverages server-side rendering for improved SEO, Next.js Image optimization for faster load times, and client components for interactive features. The modular design ensures maintainability and scalability.
 
-**Live Demo:** [Link to Deployed Application]([Link])
+**Live Demo:** [Link to Deployed Application](https://reelix-2.vercel.app/)
 
 ## Table of Contents
 
