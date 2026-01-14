@@ -1,0 +1,90 @@
+.notFoundContainer {
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  min-height: 75vh;
+  max-width: 1000px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.notFoundTitle {
+  line-height: 1;
+  font-size: 8rem;
+  color: var(--primary);
+  transition: 0.3s ease;
+  font-family: var(--font-bebas-neue), sans-serif;
+  margin-bottom: 1rem;
+}
+
+.notFoundDescription {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-family: var(--font-bebas-neue), sans-serif;
+}
+
+.notFoundText {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.homeLink {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  border-radius: 0.25rem;
+  background-color: var(--primary);
+  color: var(--header-bg-color);
+  transition: 0.3s ease;
+  font-family: var(--font-bebas-neue), sans-serif;
+}
+
+.homeLink:hover {
+  box-shadow: var(--shadow-small);
+  transform: translateY(-3px);
+}
+
+/* Tablet responsiveness */
+@media (max-width: 768px) {
+  .notFoundTitle {
+    font-size: 6rem;
+  }
+
+  .notFoundDescription {
+    font-size: 2rem;
+  }
+
+  .notFoundText {
+    font-size: 1.15rem;
+  }
+
+  .homeLink {
+    font-size: 1.25rem;
+    padding: 0.85rem 1.75rem;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .notFoundTitle {
+    font-size: 4rem;
+  }
+
+  .notFoundDescription {
+    font-size: 1.5rem;
+  }
+
+  .notFoundText {
+    font-size: 1rem;
+  }
+
+  .homeLink {
+    font-size: 1.15rem;
+    padding: 0.75rem 1.5rem;
+  }
+}

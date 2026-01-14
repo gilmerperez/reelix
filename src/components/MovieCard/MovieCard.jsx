@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import Image from "next/image";
+import Link from "next/link";
 import styles from "./MovieCard.module.css";
 
 function MovieCard({ movie }) {
@@ -11,13 +12,16 @@ function MovieCard({ movie }) {
 
   return (
     <>
-      <Link to={`/movie/${id}`}>
+      <Link href={`/movie/${id}`}>
         <div className={styles.movieCard}>
           {/* Movie poster */}
-          <img
+          <Image
             alt={`${title} Poster`}
             className={styles.moviePoster}
             src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+            width={500}
+            height={750}
+            unoptimized
           />
           <div className={styles.movieCardContent}>
             {/* Movie title */}

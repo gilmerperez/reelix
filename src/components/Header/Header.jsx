@@ -1,10 +1,16 @@
-import logo from "/favicon.png";
-import styles from "./Header.module.css";
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { createPortal } from "react-dom";
-import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
+import styles from "./Header.module.css";
+import logo from "/favicon.png";
 
 function Header() {
+  const pathname = usePathname();
+  
   // * Sticky header logic
   const [isScrollingUp, setIsScrollingUp] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -20,8 +26,8 @@ function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  // * Custom styles for active page
-  const navLinkClass = ({ isActive }) => (isActive ? styles.activeLink : undefined);
+  // * Check if link is active
+  const isActive = (path) => pathname === path;
 
   // * Mobile sidebar toggle
   const [menuOpen, setMenuOpen] = useState(false);
@@ -44,34 +50,34 @@ function Header() {
           {/* Desktop header */}
           <div className={styles.desktopHeader}>
             {/* Logo */}
-            <NavLink to="/" className={styles.logoLink}>
-              <img src={logo} alt="Reelix Logo" className={styles.logo} />
+            <Link href="/" className={styles.logoLink}>
+              <Image src={logo} alt="Reelix Logo" className={styles.logo} width={40} height={40} priority />
               <span className={styles.logoTitle}>Reelix</span>
-            </NavLink>
+            </Link>
             {/* Site navigation */}
             <nav className={styles.navContainer}>
-              <NavLink to="/" className={navLinkClass} end>
+              <Link href="/" className={isActive("/") ? styles.activeLink : undefined}>
                 HOME
-              </NavLink>
-              <NavLink to="/movies" className={navLinkClass}>
+              </Link>
+              <Link href="/movies" className={isActive("/movies") ? styles.activeLink : undefined}>
                 MOVIES
-              </NavLink>
-              <NavLink to="/tv-shows" className={navLinkClass}>
+              </Link>
+              <Link href="/tv-shows" className={isActive("/tv-shows") ? styles.activeLink : undefined}>
                 TV SHOWS
-              </NavLink>
-              <NavLink to="/top-imdb" className={navLinkClass}>
+              </Link>
+              <Link href="/top-imdb" className={isActive("/top-imdb") ? styles.activeLink : undefined}>
                 TOP IMDB
-              </NavLink>
+              </Link>
             </nav>
           </div>
 
           {/* Mobile header */}
           <div className={styles.mobileHeader}>
             {/* Logo */}
-            <NavLink to="/" className={styles.logoLink}>
-              <img src={logo} alt="Reelix Logo" className={styles.logo} />
+            <Link href="/" className={styles.logoLink}>
+              <Image src={logo} alt="Reelix Logo" className={styles.logo} width={40} height={40} priority />
               <span className={styles.logoTitle}>Reelix</span>
-            </NavLink>
+            </Link>
             {/* Hamburger button */}
             <button className={styles.hamburger} onClick={handleHamburgerClick}>
               <i className={`fa-solid fa-bars ${isSpinning ? styles.spin : ""}`}></i>
@@ -91,34 +97,34 @@ function Header() {
               </button>
               {/* Sidebar site navigation */}
               <nav className={styles.sidebarNavItems}>
-                <NavLink to="/" className={navLinkClass} onClick={() => setMenuOpen(false)}>
+                <Link href="/" className={isActive("/") ? styles.activeLink : undefined} onClick={() => setMenuOpen(false)}>
                   Home
-                </NavLink>
-                <NavLink to="/movies" className={navLinkClass} onClick={() => setMenuOpen(false)}>
+                </Link>
+                <Link href="/movies" className={isActive("/movies") ? styles.activeLink : undefined} onClick={() => setMenuOpen(false)}>
                   Movies
-                </NavLink>
-                <NavLink to="/tv-shows" className={navLinkClass} onClick={() => setMenuOpen(false)}>
+                </Link>
+                <Link href="/tv-shows" className={isActive("/tv-shows") ? styles.activeLink : undefined} onClick={() => setMenuOpen(false)}>
                   TV Shows
-                </NavLink>
-                <NavLink to="/top-imdb" className={navLinkClass} onClick={() => setMenuOpen(false)}>
+                </Link>
+                <Link href="/top-imdb" className={isActive("/top-imdb") ? styles.activeLink : undefined} onClick={() => setMenuOpen(false)}>
                   Top IMDB
-                </NavLink>
+                </Link>
               </nav>
               {/* Sidebar footer */}
               <div className={styles.sidebarFooter}>
                 {/* Sidebar legal pages */}
-                <NavLink to="/contact" className={navLinkClass} onClick={() => setMenuOpen(false)}>
+                <Link href="/contact" className={isActive("/contact") ? styles.activeLink : undefined} onClick={() => setMenuOpen(false)}>
                   <i className="fa-solid fa-paper-plane"></i>
                   Contact
-                </NavLink>
-                <NavLink to="/privacy-policy" className={navLinkClass} onClick={() => setMenuOpen(false)}>
+                </Link>
+                <Link href="/privacy-policy" className={isActive("/privacy-policy") ? styles.activeLink : undefined} onClick={() => setMenuOpen(false)}>
                   <i className="fa-solid fa-shield-halved"></i>
                   Privacy Policy
-                </NavLink>
-                <NavLink to="/terms-of-service" className={navLinkClass} onClick={() => setMenuOpen(false)}>
+                </Link>
+                <Link href="/terms-of-service" className={isActive("/terms-of-service") ? styles.activeLink : undefined} onClick={() => setMenuOpen(false)}>
                   <i className="fa-solid fa-asterisk"></i>
                   Terms of Service
-                </NavLink>
+                </Link>
               </div>
             </div>
           </div>,

@@ -1,26 +1,56 @@
 import "../styles/globals.css";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bebas_Neue, Montserrat } from "next/font/google";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bebasNeue = Bebas_Neue({
+  variable: "--font-bebas-neue",
   subsets: ["latin"],
+  weight: "400",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
 });
 
 export const metadata = {
-  title: "Reelix 2",
-  description: "Reelix 2",
+  title: "Reelix | Explore The Latest Movies & TV Shows",
+  description:
+    "Discover movies and TV shows with Reelix — your go-to platform for exploring the latest releases, trailers, ratings, and detailed metadata. Designed as a modern, fully responsive media discovery app.",
+  keywords: [
+    "movies",
+    "TV shows",
+    "entertainment",
+    "movie database",
+    "TV database",
+    "trailers",
+    "ratings",
+    "IMDB",
+    "film discovery",
+    "streaming",
+    "media",
+  ],
+  authors: [{ name: "Gilmer Perez" }],
+  openGraph: {
+    title: "Reelix | Explore The Latest Movies & TV Shows",
+    description:
+      "Discover movies and TV shows with Reelix — your go-to platform for exploring the latest releases, trailers, ratings, and detailed metadata.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <>
       <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body>
+        <body className={`${bebasNeue.variable} ${montserrat.variable}`}>
+          <Header />
+          {children}
+          <Footer />
+        </body>
       </html>
     </>
   );

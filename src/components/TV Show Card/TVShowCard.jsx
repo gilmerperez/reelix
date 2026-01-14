@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import Image from "next/image";
+import Link from "next/link";
 import styles from "./TVShowCard.module.css";
 
 function TVShowCard({ show }) {
@@ -7,13 +8,16 @@ function TVShowCard({ show }) {
 
   return (
     <>
-      <Link to={`/tv-show/${id}`}>
+      <Link href={`/tv-show/${id}`}>
         <div className={styles.tvCard}>
           {/* TV show poster */}
-          <img
+          <Image
             alt={`${name} Poster`}
             className={styles.tvPoster}
             src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+            width={500}
+            height={750}
+            unoptimized
           />
           <div className={styles.tvCardContent}>
             {/* TV show title */}

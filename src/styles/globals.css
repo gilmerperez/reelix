@@ -1,8 +1,4 @@
-/* Bebas Neue font */
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-
-/* Montserrat font */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+/* Fonts are loaded via Next.js font optimization in layout.jsx */
 
 /* Root variables */
 :root {
@@ -89,7 +85,7 @@ body {
   background-color: var(--bg-color);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
 }
 
 /* Main */

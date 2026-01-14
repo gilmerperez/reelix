@@ -19,7 +19,7 @@ select {
   border-radius: 0.25rem;
   color: var(--text-primary);
   border: 2px solid var(--primary);
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-bebas-neue), sans-serif;
   background-color: var(--header-bg-color);
 }
 

@@ -54,7 +54,7 @@ header {
   font-size: 2.5rem;
   color: var(--primary);
   transition: 0.3s ease;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-bebas-neue), sans-serif;
 }
 
 .logoTitle:hover {
@@ -74,7 +74,7 @@ header {
   position: relative;
   font-size: 1.75rem;
   transition: 0.3s ease;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-bebas-neue), sans-serif;
 }
 
 /* Prevent hover effect on active link */
@@ -251,7 +251,7 @@ header {
   transition: 0.3s ease;
   margin-left: -1.75rem;
   padding: 0.75rem 1.75rem;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-bebas-neue), sans-serif;
 }
 
 /* Prevent hover effect on active link */
@@ -280,7 +280,7 @@ header {
   flex-direction: column;
   align-items: flex-start;
   color: var(--text-secondary);
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-bebas-neue), sans-serif;
 }
 
 /* Ensure all icons take up consistent width */

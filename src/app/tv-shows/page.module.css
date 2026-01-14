@@ -1,0 +1,129 @@
+.tvShowsContainer {
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  max-width: 1200px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Title */
+.tvShowsTitle {
+  line-height: 1;
+  font-size: 4.5rem;
+  text-align: center;
+  color: var(--primary);
+  transition: 0.3s ease;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-bebas-neue), sans-serif;
+}
+
+.tvShowsTitle:hover {
+  text-shadow: var(--shadow-large);
+}
+
+/* Error message */
+.errorMessage {
+  padding: 1rem;
+  font-size: 1.25rem;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  background-color: hsla(355, 95%, 45%, 0.75);
+}
+
+/* Search bar */
+.searchBar {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  border-radius: 0.25rem;
+}
+
+.searchBar input {
+  flex: 1;
+  width: 90%;
+  height: 50px;
+  padding: 1rem;
+  font-size: 1.375rem;
+  transition: 0.3s ease;
+  color: var(--text-primary);
+  background-color: hsl(0, 0%, 10%);
+}
+
+.searchBar button {
+  width: 10%;
+  font-size: 1.5rem;
+  transition: 0.3s ease;
+  color: var(--header-bg-color);
+  background-color: var(--primary);
+}
+
+/* TV show cards */
+.tvShowCards {
+  gap: 1rem;
+  width: 100%;
+  display: grid;
+  transition: 0.3s ease;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.emptyState {
+  font-weight: 500;
+  font-size: 1.15rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+/* Desktop responsiveness */
+@media (max-width: 1200px) {
+  .tvShowCards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .tvShowCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tablet responsiveness */
+@media (max-width: 768px) {
+  .tvShowsTitle {
+    font-size: 4rem;
+  }
+
+  .searchBar input {
+    font-size: 1.25rem;
+  }
+
+  .searchBar button {
+    font-size: 1.375rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .tvShowCards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .tvShowsTitle {
+    font-size: 3rem;
+  }
+
+  .searchBar input {
+    width: 85%;
+    font-size: 1.15rem;
+  }
+
+  .searchBar button {
+    width: 15%;
+    font-size: 1.25rem;
+  }
+}

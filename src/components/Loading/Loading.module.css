@@ -5,7 +5,7 @@
   text-align: center;
   color: var(--primary);
   text-shadow: var(--shadow-large);
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-bebas-neue), sans-serif;
 }
 
 /* Tablet responsiveness */

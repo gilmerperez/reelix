@@ -1,7 +1,10 @@
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./Footer.module.css";
-import { NavLink, Link } from "react-router-dom";
 
 function Footer() {
+  const pathname = usePathname();
+  
   return (
     <>
       <footer>
@@ -25,10 +28,10 @@ function Footer() {
             <section className={styles.siteNavigation}>
               <h6 className={styles.navHeader}>PAGES</h6>
               <nav className={styles.navItems}>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/movies">Movies</NavLink>
-                <NavLink to="/tv-shows">TV Shows</NavLink>
-                <NavLink to="/top-imdb">Top IMDB</NavLink>
+                <Link href="/">Home</Link>
+                <Link href="/movies">Movies</Link>
+                <Link href="/tv-shows">TV Shows</Link>
+                <Link href="/top-imdb">Top IMDB</Link>
               </nav>
             </section>
             {/* Social links */}
@@ -40,7 +43,7 @@ function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialLink}
-                  to="https://www.facebook.com/"
+                  href="https://www.facebook.com/"
                 >
                   Facebook
                 </Link>
@@ -49,7 +52,7 @@ function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialLink}
-                  to="https://www.instagram.com/"
+                  href="https://www.instagram.com/"
                 >
                   Instagram
                 </Link>
@@ -57,7 +60,7 @@ function Footer() {
                 <Link
                   target="_blank"
                   rel="noopener noreferrer"
-                  to="https://www.google.com/"
+                  href="https://www.google.com/"
                   className={styles.socialLink}
                 >
                   Google Page
@@ -68,9 +71,9 @@ function Footer() {
             <section className={styles.legalPages}>
               <h6 className={styles.navHeader}>LEGAL</h6>
               <nav className={styles.navItems}>
-                <NavLink to="/contact">Contact</NavLink>
-                <NavLink to="/privacy-policy">Privacy Policy</NavLink>
-                <NavLink to="/terms-of-service">Terms of Service</NavLink>
+                <Link href="/contact">Contact</Link>
+                <Link href="/privacy-policy">Privacy Policy</Link>
+                <Link href="/terms-of-service">Terms of Service</Link>
               </nav>
             </section>
             {/* Contact info */}
@@ -78,11 +81,11 @@ function Footer() {
               <h6 className={styles.navHeader}>CONTACT</h6>
               <nav className={styles.navItems}>
                 {/* Phone number */}
-                <Link className={styles.contactLink} to="tel:+14073501805">
+                <Link className={styles.contactLink} href="tel:+14073501805">
                   (408) 540-3700
                 </Link>
                 {/* Email */}
-                <Link className={styles.contactLink} to="mailto:gilmer2002@outlook.com">
+                <Link className={styles.contactLink} href="mailto:gilmer2002@outlook.com">
                   reelix@info.com
                 </Link>
                 {/* Address */}
@@ -90,7 +93,7 @@ function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.contactLink}
-                  to="https://www.google.com/maps/place/Netflix+-+Building+E+-+Main+Lobby/@37.2570665,-121.9666096,778m/data=!3m1!1e3!4m6!3m5!1s0x808e35a0d3457091:0xdebdf28350f4befc!8m2!3d37.2570306!4d-121.9639833!16s%2Fg%2F11b8zb4lq9?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D"
+                  href="https://www.google.com/maps/place/Netflix+-+Building+E+-+Main+Lobby/@37.2570665,-121.9666096,778m/data=!3m1!1e3!4m6!3m5!1s0x808e35a0d3457091:0xdebdf28350f4befc!8m2!3d37.2570306!4d-121.9639833!16s%2Fg%2F11b8zb4lq9?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D"
                 >
                   121 Albright Wy, Los Gatos, CA 95032
                 </Link>
