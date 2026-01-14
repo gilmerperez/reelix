@@ -5,10 +5,10 @@ import Loading from "../../components/Loading/Loading";
 import { useRouter, useSearchParams } from "next/navigation";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import Pagination from "../../components/Pagination/Pagination";
-import { useEffect, useState, useMemo, useCallback } from "react";
+import { useEffect, useState, useMemo, useCallback, Suspense } from "react";
 import { fetchFilteredContent, searchMovies } from "../../utils/api";
 
-export default function Movies() {
+function MoviesContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -180,5 +180,13 @@ export default function Movies() {
         </div>
       </main>
     </>
+  );
+}
+
+export default function Movies() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <MoviesContent />
+    </Suspense>
   );
 }

@@ -5,10 +5,10 @@ import Loading from "../../components/Loading/Loading";
 import { useSearchParams, useRouter } from "next/navigation";
 import Pagination from "../../components/Pagination/Pagination";
 import TVShowCard from "../../components/TV Show Card/TVShowCard";
-import { useEffect, useState, useMemo, useCallback } from "react";
+import { useEffect, useState, useMemo, useCallback, Suspense } from "react";
 import { fetchFilteredContent, searchTVShows } from "../../utils/api";
 
-export default function TVShows() {
+function TVShowsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -180,5 +180,13 @@ export default function TVShows() {
         </div>
       </main>
     </>
+  );
+}
+
+export default function TVShows() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <TVShowsContent />
+    </Suspense>
   );
 }
