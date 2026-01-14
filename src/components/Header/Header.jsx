@@ -49,7 +49,15 @@ function Header() {
           <div className={styles.desktopHeader}>
             {/* Logo */}
             <Link href="/" className={styles.logoLink}>
-              <Image src="/favicon.png" alt="Reelix Logo" className={styles.logo} width={40} height={40} priority />
+              <Image
+                priority
+                width={40}
+                height={40}
+                alt="Reelix Logo"
+                src="/favicon.png"
+                className={styles.logo}
+                style={{ width: "auto" }}
+              />
               <span className={styles.logoTitle}>Reelix</span>
             </Link>
             {/* Site navigation */}
@@ -73,7 +81,15 @@ function Header() {
           <div className={styles.mobileHeader}>
             {/* Logo */}
             <Link href="/" className={styles.logoLink}>
-              <Image src="/favicon.png" alt="Reelix Logo" className={styles.logo} width={40} height={40} priority />
+              <Image
+                priority
+                width={40}
+                height={40}
+                alt="Reelix Logo"
+                src="/favicon.png"
+                className={styles.logo}
+                style={{ width: "auto" }}
+              />
               <span className={styles.logoTitle}>Reelix</span>
             </Link>
             {/* Hamburger button */}

@@ -50,7 +50,15 @@ export default function Home() {
       <main>
         <div className={styles.homeContainer}>
           {/* Logo */}
-          <Image src="/favicon.png" alt="Reelix Logo" className={styles.reelixLogo} width={100} height={100} priority />
+          <Image
+            priority
+            width={100}
+            height={100}
+            alt="Reelix Logo"
+            src="/favicon.png"
+            style={{ width: "auto" }}
+            className={styles.reelixLogo}
+          />
 
           {/* Title */}
           <h1 className={styles.homeTitle}>Reelix</h1>
