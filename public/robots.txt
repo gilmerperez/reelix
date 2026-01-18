@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://reelix-2.vercel.app/sitemap.xml
+
+# Disallow admin or private paths if any exist in the future
+# Disallow: /admin/

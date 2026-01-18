@@ -3,10 +3,6 @@ import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 
 export default function Contact() {
-  // * Change page title
-  useEffect(() => {
-    document.title = "Reelix | Contact";
-  }, []);
 
   // * Subject and message state
   const [subject, setSubject] = useState("");

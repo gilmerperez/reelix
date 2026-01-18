@@ -6,10 +6,32 @@ import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 import Accordion from "../components/Accordion/Accordion";
 import { searchMovies, searchTVShows } from "../utils/api";
+import Script from "next/script";
 
 export default function Home() {
   const router = useRouter();
   const [query, setQuery] = useState("");
+
+  // Structured data for the homepage
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Reelix",
+    description: "Discover movies and TV shows with Reelix — your go-to platform for exploring the latest releases, trailers, ratings, and detailed metadata.",
+    url: "https://reelix-2.vercel.app",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://reelix-2.vercel.app/movies?search={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Reelix",
+    },
+  };
 
   // * Handle search
   const handleSearch = async () => {
@@ -47,6 +69,11 @@ export default function Home() {
 
   return (
     <>
+      <Script
+        id="home-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <main>
         <div className={styles.homeContainer}>
           {/* Logo */}

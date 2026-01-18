@@ -12,10 +12,6 @@ function TVShowsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // * Change page title
-  useEffect(() => {
-    document.title = "Reelix | TV Shows";
-  }, []);
 
   // * State hooks
   const [page, setPage] = useState(1);

@@ -20,10 +20,6 @@ function MoviesContent() {
   const [searchTerm, setSearchTerm] = useState("");
   const [totalResults, setTotalResults] = useState(0);
 
-  // * Change page title
-  useEffect(() => {
-    document.title = "Reelix | Movies";
-  }, []);
 
   // * Extract filters from the URL parameters, using useMemo to prevent unnecessary effect triggers
   const filters = useMemo(

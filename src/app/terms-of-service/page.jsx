@@ -3,10 +3,6 @@ import { useEffect } from "react";
 import styles from "./page.module.css";
 
 export default function TermsOfService() {
-  // * Change page title
-  useEffect(() => {
-    document.title = "Reelix | Terms of Service";
-  }, []);
 
   return (
     <>

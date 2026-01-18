@@ -8,10 +8,6 @@ import TopIMDBCard from "../../components/Top IMDB Card/TopIMDBCard";
 import { fetchTopRatedMovies, searchMovies } from "../../utils/api";
 
 export default function TopIMDB() {
-  // * Change page title
-  useEffect(() => {
-    document.title = "Reelix | Top IMDB";
-  }, []);
 
   // * State hooks
   const [page, setPage] = useState(1);

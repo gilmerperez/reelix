@@ -6,6 +6,7 @@ import { fetchMediaDetails } from "../../../utils/api";
 import Loading from "../../../components/Loading/Loading";
 import MediaBanner from "../../../components/MediaDetail/MediaBanner";
 import MediaDetails from "../../../components/MediaDetail/MediaDetails";
+import Script from "next/script";
 
 export default function TVShowDetail() {
   // * State Hooks
@@ -21,15 +22,6 @@ export default function TVShowDetail() {
       isMounted.current = false;
     };
   }, []);
-
-  // * Update page title based on media
-  useEffect(() => {
-    if (media) {
-      document.title = `Reelix | ${media.title || media.name}`;
-    } else {
-      document.title = "Reelix | Loading...";
-    }
-  }, [media]);
 
   // * Fetch media details
   useEffect(() => {
@@ -56,8 +48,54 @@ export default function TVShowDetail() {
     getDetails();
   }, [id]);
 
+  // Generate structured data when media is loaded
+  const structuredData = media
+    ? {
+        "@context": "https://schema.org",
+        "@type": "TVSeries",
+        name: media.title || media.name,
+        description: media.overview || "",
+        image: media.poster_path ? `https://image.tmdb.org/t/p/w500${media.poster_path}` : undefined,
+        datePublished: media.release_date || undefined,
+        aggregateRating: media.vote_average
+          ? {
+              "@type": "AggregateRating",
+              ratingValue: media.vote_average,
+              ratingCount: media.vote_count || 0,
+              bestRating: 10,
+              worstRating: 0,
+            }
+          : undefined,
+        numberOfSeasons: media.number_of_seasons || undefined,
+        genre: media.genres || [],
+        actor: media.cast
+          ? media.cast.slice(0, 6).map((name) => ({
+              "@type": "Person",
+              name: name,
+            }))
+          : undefined,
+        trailer: media.trailer_link
+          ? {
+              "@type": "VideoObject",
+              name: `${media.title || media.name} Trailer`,
+              description: `Official trailer for ${media.title || media.name}`,
+              thumbnailUrl: media.backdrop_path ? `https://image.tmdb.org/t/p/w1280${media.backdrop_path}` : undefined,
+              uploadDate: media.release_date || undefined,
+              contentUrl: media.trailer_link,
+            }
+          : undefined,
+      }
+    : null;
+
   return (
     <>
+      {structuredData && (
+        <Script
+          id="tv-show-structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      )}
       <main>
         {/* Error */}
         {error && (

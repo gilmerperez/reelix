@@ -19,7 +19,11 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "Reelix | Explore The Latest Movies & TV Shows",
+  metadataBase: new URL("https://reelix-2.vercel.app"),
+  title: {
+    default: "Reelix | Explore The Latest Movies & TV Shows",
+    template: "%s | Reelix",
+  },
   description:
     "Discover movies and TV shows with Reelix — your go-to platform for exploring the latest releases, trailers, ratings, and detailed metadata. Designed as a modern, fully responsive media discovery app.",
   keywords: [
@@ -36,6 +40,8 @@ export const metadata = {
     "media",
   ],
   authors: [{ name: "Gilmer Perez" }],
+  creator: "Gilmer Perez",
+  publisher: "Reelix",
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
@@ -46,6 +52,42 @@ export const metadata = {
     description:
       "Discover movies and TV shows with Reelix — your go-to platform for exploring the latest releases, trailers, ratings, and detailed metadata.",
     type: "website",
+    url: "https://reelix-2.vercel.app",
+    siteName: "Reelix",
+    images: [
+      {
+        url: "/favicon.png",
+        width: 1200,
+        height: 630,
+        alt: "Reelix Logo",
+      },
+    ],
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Reelix | Explore The Latest Movies & TV Shows",
+    description:
+      "Discover movies and TV shows with Reelix — your go-to platform for exploring the latest releases, trailers, ratings, and detailed metadata.",
+    images: ["/favicon.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // Add Google Search Console verification code if available
+    google: "3FTfHaZrjPjKogJbOTyhOila5U11Fj2l512M51iBOH0",
+  },
+  alternates: {
+    canonical: "https://reelix-2.vercel.app",
   },
 };
 

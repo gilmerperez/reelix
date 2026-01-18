@@ -3,10 +3,6 @@ import { useEffect } from "react";
 import styles from "./page.module.css";
 
 export default function PrivacyPolicy() {
-  // * Change page title
-  useEffect(() => {
-    document.title = "Reelix | Privacy Policy";
-  }, []);
 
   return (
     <>
