@@ -83,7 +83,6 @@ export const metadata = {
     },
   },
   verification: {
-    // Add Google Search Console verification code if available
     google: "3FTfHaZrjPjKogJbOTyhOila5U11Fj2l512M51iBOH0",
   },
   alternates: {
